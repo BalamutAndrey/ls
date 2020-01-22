@@ -1,0 +1,30 @@
+{
+// Документацию по формату tasks.json см.
+	// по адресу https://go.microsoft.com/fwlink/?LinkId=733558
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "clang build active file",
+			"command": "/usr/bin/clang",
+			"args": [
+				"${file}",
+				"${fileDirname}/src/*.c",
+				"-I",
+				"${fileDirname}/includes/",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}",
+				"-Wall",
+				"-Wextra",
+				"-Werror"
+			],
+			"options": {
+				"cwd": "/usr/bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		}
+	]
+}
