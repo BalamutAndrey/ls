@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/22 19:04:50 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/22 19:14:15 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef	struct	s_fin
 	struct s_fin	*next;
 }				t_fin;
 
-int		main(void);
 int		ft_open_and_read_dir(char *cur);
 int		ft_read_dir_cycle(DIR *dir, t_fin *first);
 void	ft_is_it_prev_cur_dir(t_fin *temp);

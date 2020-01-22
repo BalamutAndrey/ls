@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/22 18:27:48 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/22 19:11:51 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	printf("o = %i\n", kl->o);
 	printf("G = %i\n", kl->g_big);
 	printf("S = %i\n", kl->s_big);
-	res = ft_open_and_read_dir(/*строка с названием директории*/);
+	res = ft_open_and_read_dir(ft_strdup("test"));
 	return (0);
 }
 
