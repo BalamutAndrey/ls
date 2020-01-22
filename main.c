@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/22 19:11:51 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/22 19:38:08 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 {
 	t_keylist	*kl;
 	int			res;
+	char		*str;
 	
 	if (!(kl = ft_ls_parsing_key(argc, argv)))
 	{
@@ -37,7 +38,8 @@ int	main(int argc, char **argv)
 	printf("o = %i\n", kl->o);
 	printf("G = %i\n", kl->g_big);
 	printf("S = %i\n", kl->s_big);
-	res = ft_open_and_read_dir(ft_strdup("test"));
+	str = ft_strdup(".");
+	res = ft_open_and_read_dir(str);
 	return (0);
 }
 

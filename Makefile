@@ -6,7 +6,7 @@
 #    By: geliz <geliz@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/18 12:46:02 by geliz             #+#    #+#              #
-#    Updated: 2020/01/22 19:10:28 by geliz            ###   ########.fr        #
+#    Updated: 2020/01/22 19:38:10 by geliz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ all: $(NAME)
 .PHONY: clean fclean re
 
 $(NAME): LIB $(OBJ)
-		@gcc $(FLAGS) $(OBJ) -L$(LIB_DIR) -lft -o $(NAME)
+		@gcc $(FLAGS) $(OBJ) -I$(HEADERS) -L$(LIB_DIR) -lft -o $(NAME)
 		@echo "[\x1b[37;42;1m$(NAME) COMPILED\x1b[0m]"
 
 LIB:
