@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/22 18:05:18 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/22 18:26:46 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 				i++;
 			else
 			{
-				printf("ErrorKEY!!!"); // Fix to ft_
+				printf("ErrorKEY!!!"); // Fix to ft_printf
 				return (0);
 			}
 		}
