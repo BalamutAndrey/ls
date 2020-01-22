@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/22 18:20:13 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/22 18:24:21 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,3 @@ int		ft_open_and_read_dir(char *cur)
 	closedir(dir);
 	return (0);
 }
-/*
-int		main(void)
-{
-	char	*curdir;
-	int		res;
-
-	if (!(curdir = ft_strdup("test")))
-		return (0);
-	res = ft_open_and_read_dir(curdir);
-	ft_strdel(&curdir);
-	return (0);
-}*/
