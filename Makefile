@@ -6,7 +6,7 @@
 #    By: geliz <geliz@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/18 12:46:02 by geliz             #+#    #+#              #
-#    Updated: 2020/01/22 18:20:09 by geliz            ###   ########.fr        #
+#    Updated: 2020/01/22 19:10:28 by geliz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@ NAME = ft_ls
 FLAGS = -Wall -Wextra -Werror
 HEADERS = ./includes
 SRC_DIR = ./src
-SRC = $(SRC_DIR)/open_and_read_dir.c $(SRC_DIR)/ft_sort_print_recurs_call.c $(SRC_DIR)/ft_check_access_rights.c \
-	  $(SRC_DIR)/ft_create_and_del_t_fin.c
+SRC = main.c  $(SRC_DIR)/parsing.c $(SRC_DIR)/keylist.c \
+	  $(SRC_DIR)/open_and_read_dir.c $(SRC_DIR)/ft_sort_print_recurs_call.c $(SRC_DIR)/ft_create_and_del_t_fin.c \
+	  $(SRC_DIR)/ft_file_info.c $(SRC_DIR)/ft_check_access_rights.c 
 OBJ_DIR = ./obj
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 LIB_DIR = ./libft

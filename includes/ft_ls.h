@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/22 18:12:35 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/22 19:04:50 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void	ft_recursive_call(t_fin *first);
 void	ft_delete_lists(t_fin *first);
 
 char	*ft_check_access_rights(struct stat buff);
+int		ft_file_info(struct stat buff, t_fin *first);
 #endif
