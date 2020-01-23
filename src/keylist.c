@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:50:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/22 16:44:29 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/23 16:36:08 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,34 @@ t_keylist	*create_keylist(void)
 	kl->o = 0;
 	kl->s_big = 0;
 	kl->g_big = 0;
+	kl->first = create_dirkeylist();
+	if (!kl->first)
+		return (NULL);
+	kl->current = kl->first;
+	kl->end = kl->first;
+	kl->dirnbr = 0;
 	return (kl);
+}
+
+t_dirkeylist	*create_dirkeylist(void)
+{
+	t_dirkeylist	*dkl;
+	dkl = (t_dirkeylist *)malloc(sizeof(t_dirkeylist));
+	if (!dkl)
+		return (NULL);
+	dkl->dir = NULL;
+	dkl->next = NULL;
+	return (dkl);
+}
+
+t_dirkeylist	*add_dkl(t_keylist *kl)
+{
+	t_dirkeylist	*dkl;
+	
+	dkl = create_dirkeylist();
+	if (!dkl)
+		return (NULL);
+	kl->end->next = dkl;
+	kl->dirnbr += 1;
+	return (dkl);
 }

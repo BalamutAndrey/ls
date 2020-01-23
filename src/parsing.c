@@ -6,13 +6,14 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/23 15:42:23 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/23 17:48:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-#include <stdio.h> //remove
+#include <stdio.h>	//remove
+#include <string.h>	//remove
 
 t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 {
@@ -20,24 +21,41 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 	int			i;
 	int			c;
 
-	i = 1;
+	i = 0;
 	if (!(kl = create_keylist()))
 		return (NULL);
-	while ((argc > 1) && i < argc)
-	{
+	while ((argc > 1) && ++i < argc)
 		if (argv[i][0] == '-')
 		{
-			if ((c = ft_ls_key(kl, argv[i])) == 255)
-				i++;
-			else
+			if ((c = ft_ls_key(kl, argv[i])) != 255)
 			{
-				printf("%s: illegal option -- %c\n", argv[0], argv[i][c]); // Fix to ft_printf
-				printf("usage: %s [-AGLRSafglortu] [file ...]\n", argv[0]); // Fix to ft_printf
+				printf("%s: illegal option -- %c\n", argv[0], argv[i][c]);	// Fix to ft_printf
+				printf("usage: %s [-AGLRSafglortu] [file ...]\n", argv[0]);	// Fix to ft_printf
 				return (0);
 			}
 		}
+		else
+			ft_ls_writedir(kl, argv[i]);
+	if (kl->dirnbr == 0)
+	{
+		kl->first->dir = strdup(".");
+		kl->dirnbr = 1;
 	}
 	return (kl);
+}
+
+void		ft_ls_writedir(t_keylist *kl, char *argv)
+{
+	if (kl->dirnbr == 0)
+	{
+		kl->first->dir = strdup(argv);
+		kl->dirnbr = 1;
+	}
+	else
+	{
+		kl->end = add_dkl(kl);				// Fix to ft_strdup
+		kl->end->dir = strdup(argv);		// Fix to ft_strdup
+	}
 }
 
 int			ft_ls_key(t_keylist *kl, char *argv)

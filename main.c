@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/23 15:33:53 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/23 17:42:03 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	
 	if (!(kl = ft_ls_parsing_key(argc, argv)))
 	{
-		//printf("ERROR!\n"); //fix to ft_
+		// printf("ERROR!\n"); //fix to ft_
 		return (0);
 	}
 	printf("l = %i\n", kl->l);
@@ -38,6 +38,18 @@ int	main(int argc, char **argv)
 	printf("o = %i\n", kl->o);
 	printf("G = %i\n", kl->g_big);
 	printf("S = %i\n", kl->s_big);
+
+	printf("===========\n");
+	int i;
+	i = 1;
+	kl->current = kl->first;
+	while (i <= kl->dirnbr)
+	{
+		printf("i = %i; dir = %s\n", i, kl->current->dir);
+		kl->current = kl->current->next;
+		i++;
+	}
+
 	//str = ft_strdup(".");
 	//res = ft_open_and_read_dir(str);
 	return (0);
