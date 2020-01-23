@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/22 18:30:54 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/23 15:42:23 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 {
 	t_keylist	*kl;
 	int			i;
+	int			c;
 
 	i = 1;
 	if (!(kl = create_keylist()))
@@ -26,11 +27,12 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 	{
 		if (argv[i][0] == '-')
 		{
-			if (ft_ls_key(kl, argv[i]) == 1)
+			if ((c = ft_ls_key(kl, argv[i])) == 255)
 				i++;
 			else
 			{
-				printf("ErrorKEY!!!"); // Fix to ft_printf
+				printf("%s: illegal option -- %c\n", argv[0], argv[i][c]); // Fix to ft_printf
+				printf("usage: %s [-AGLRSafglortu] [file ...]\n", argv[0]); // Fix to ft_printf
 				return (0);
 			}
 		}
@@ -48,9 +50,9 @@ int			ft_ls_key(t_keylist *kl, char *argv)
 		if (ft_ls_key_if_1(kl, argv[i]) == 1)
 			i++;
 		else
-			return (0);
+			return (i);
 	}
-	return (1);
+	return (255);
 }
 
 int			ft_ls_key_if_1(t_keylist *kl, char k)

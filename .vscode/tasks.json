@@ -8,8 +8,10 @@
 			"label": "clang build active file",
 			"command": "/usr/bin/clang",
 			"args": [
+				"-g",
 				"${file}",
-				"${fileDirname}/src/*.c",
+				"${fileDirname}/src/parsing.c",
+				"${fileDirname}/src/keylist.c",
 				"-I",
 				"${fileDirname}/includes/",
 				"-o",
