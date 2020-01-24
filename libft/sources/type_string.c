@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 17:12:42 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/22 17:21:57 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/24 20:15:13 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,7 @@ char	*ft_apply_info_to_string(t_info *in, va_list ap)
 	if (in->size == L_ || in->size == LL_)
 		return (NULL);
 	temp = va_arg(ap, char *);
-	str = temp == NULL ? ft_strsub("(null)", 0, 6) : ft_strdup(temp);
-	in->content = temp == NULL ? CHAR_NULL_ : STR_;
+	str = temp == NULL ? ft_strdup("(null)") : ft_strdup(temp);
 	j = ft_strlen(str);
 	if (in->precision >= 0 && (int)j > in->precision)
 		str = ft_precision_to_string(in, str);

@@ -6,11 +6,12 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/22 19:05:15 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/24 20:24:33 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+#include <stdio.h>
 
 void	ft_is_it_prev_cur_dir(t_fin *temp)
 {
@@ -31,6 +32,8 @@ int		ft_read_dir_cycle(DIR *dir, t_fin *first)
 
 	while ((entry = readdir(dir)) != NULL)
 	{
+		if (first->name)
+			first = ft_create_next_t_fin(first, first->dir);
 		t = ft_strjoin_arg("%s %s %s", first->dir, "/", entry->d_name);
 		err = entry->d_type == DT_LNK ? lstat(t, &buff) : stat(t, &buff);
 		if (err != 0)
@@ -41,8 +44,6 @@ int		ft_read_dir_cycle(DIR *dir, t_fin *first)
 		if (ft_file_info(buff, first) != 1)
 			return (-1);
 		ft_is_it_prev_cur_dir(first);
-		first->next = ft_create_next_t_fin(first);
-		first = first->next;
 		ft_strdel(&t);
 	}
 	return (0);
@@ -55,12 +56,11 @@ int		ft_open_and_read_dir(char *cur)
 
 	if (cur == NULL)
 		return (0);
-	first = malloc(sizeof(t_fin));
-	first->dir = ft_strdup(cur);
+	first = ft_create_next_t_fin(NULL, cur);
 	dir = opendir(cur);
 	if (ft_read_dir_cycle(dir, first) == -1)
 		return (0);
-	ft_sort_t_fin(first);
+	ft_sort_t_fin(&first, (*ft_alphabet_sort));
 	ft_print_dir(first);
 	ft_recursive_call(first);
 	ft_delete_lists(first);

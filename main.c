@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/24 14:28:28 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/24 18:29:13 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
 #include <stdio.h> //remove
-
+/*
 int	main(int argc, char **argv)
 {
 	t_keylist	*kl;
@@ -55,16 +55,18 @@ int	main(int argc, char **argv)
 	remove_list(kl);
 	return (0);
 }
+*/
 
-/*
-int		main(void)
+int		main(int argc, char **argv)
 {
 	char	*curdir;
 	int		res;
 
+	if (argc > 1 || argv[0] == NULL)
+		argc = 2;
 	if (!(curdir = ft_strdup("test")))
 		return (0);
 	res = ft_open_and_read_dir(curdir);
 	ft_strdel(&curdir);
 	return (0);
-}*/
+}

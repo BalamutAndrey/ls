@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_file_info.c                                     :+:      :+:    :+:   */
+/*   ft_sort_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 19:00:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/24 17:39:50 by geliz            ###   ########.fr       */
+/*   Created: 2020/01/24 17:05:20 by geliz             #+#    #+#             */
+/*   Updated: 2020/01/24 20:02:59 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		ft_file_info(struct stat buff, t_fin *first)
+int		ft_alphabet_sort(t_fin *a, t_fin *b)
 {
-	first->chmod = ft_check_access_rights(buff);
-	return (1);
+	int		res;
+
+	res = strcmp(a->name, b->name);
+	return (res);
 }

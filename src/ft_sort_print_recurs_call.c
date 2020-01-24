@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/22 17:48:56 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/24 20:24:20 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,74 @@ void	ft_print_dir(t_fin *first)
 			len = ft_strlen(first->name);
 		first = first->next;
 	}
-	len += 8;
-	while (temp->next != NULL)
+	while (len % 8 != 0)
+		len++;
+	while (temp != NULL)
 	{
 		if (temp->type != 2)
-			ft_printf("%-*s   %s\n", len, temp->name, temp->chmod);
+			ft_printf("%-*s", len, temp->name);//, temp->chmod);
 		temp = temp->next;
 	}
+	printf("\n");
 }
 
-void	ft_sort_t_fin(t_fin *first)
+void	ft_split_t_fin(t_fin *first, t_fin **a, t_fin **b)
 {
-	t_fin	*temp;
+	t_fin	*left;
+	t_fin	*right;
 
-	temp = first;
+	left = first;
+	right = first->next;
+	while (right)
+	{
+		right = right->next;
+		if (right)
+		{
+			left = left->next;
+			right = right->next;
+		}
+	}
+	right = left->next;
+	left->next = NULL;
+	left = first;
+	*a = left;
+	*b = right;
+}
+
+t_fin	*ft_merge(t_fin *a, t_fin *b, int (*cmp)())
+{
+	t_fin	*result;
+
+	result = NULL;
+	if (!a)
+		return (b);
+	if (!b)
+		return (a);
+	if (cmp(a, b) < 0)
+	{
+		result = a;
+		result->next = ft_merge(a->next, b, (*cmp));
+	}
+	else
+	{
+		result = b;
+		result->next = ft_merge(a, b->next, (*cmp));
+	}
+	return (result);
+}
+
+void	ft_sort_t_fin(t_fin **list, int (*cmp)())
+{
+	t_fin	*first;
+	t_fin	*a;
+	t_fin	*b;
+
+	first = *list;
+	if (first && first->next)
+	{
+		ft_split_t_fin(first, &a, &b);
+		ft_sort_t_fin(&a, (*cmp));
+		ft_sort_t_fin(&b, (*cmp));
+		*list = ft_merge(a, b, (*cmp));
+	}
 }
