@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/23 17:29:46 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/24 14:28:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ typedef struct				s_keylist
 t_keylist					*create_keylist(void);
 t_dirkeylist				*create_dirkeylist(void);
 t_dirkeylist				*add_dkl(t_keylist *kl);
+void						remove_list(t_keylist *kl);
 
 #endif

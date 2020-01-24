@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/23 17:42:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/24 14:28:28 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 
 	//str = ft_strdup(".");
 	//res = ft_open_and_read_dir(str);
+	remove_list(kl);
 	return (0);
 }
 

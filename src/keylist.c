@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:50:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/23 16:36:08 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/24 14:37:43 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,22 @@ t_dirkeylist	*add_dkl(t_keylist *kl)
 	kl->end->next = dkl;
 	kl->dirnbr += 1;
 	return (dkl);
+}
+
+void			remove_list(t_keylist *kl)
+{
+	int				i;
+	t_dirkeylist	*tempdir1;
+	t_dirkeylist	*tempdir2;
+
+	i = 0;
+	tempdir1 = kl->first;
+	while (++i <= kl->dirnbr)
+	{
+		free(tempdir1->dir);
+		tempdir2 = tempdir1->next;
+		free(tempdir1);
+		tempdir1 = tempdir2;
+	}
+	free(kl);
 }
