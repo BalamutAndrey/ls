@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/23 18:24:31 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/26 14:18:28 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 		{
 			if ((c = ft_ls_key(kl, argv[i])) != 255)
 			{
-				printf("%s: illegal option -- %c\n", argv[0], argv[i][c]);	// Fix to ft_printf
-				printf("usage: %s [-AGLRSafglortu] [file ...]\n", argv[0]);	// Fix to ft_printf
+				ft_printf("%s: illegal option -- %c\n", argv[0], argv[i][c]);	// Fix to ft_printf
+				ft_printf("usage: %s [-AGLRSafglortu] [file ...]\n", argv[0]);	// Fix to ft_printf
 				return (0);
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:30:04 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/23 17:47:24 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/26 14:19:58 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PARSING_H
 
 # include "keylist.h"
+# include "ft_printf.h"
 
 t_keylist	*ft_ls_parsing_key(int argc, char **argv);
 void		ft_ls_writedir(t_keylist *kl, char *argv);

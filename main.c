@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/24 18:29:13 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/26 14:27:08 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
 #include <stdio.h> //remove
-/*
+
 int	main(int argc, char **argv)
 {
 	t_keylist	*kl;
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	
 	if (!(kl = ft_ls_parsing_key(argc, argv)))
 	{
-		// printf("ERROR!\n"); //fix to ft_
 		return (0);
 	}
 	printf("l = %i\n", kl->l);
@@ -50,13 +49,25 @@ int	main(int argc, char **argv)
 		i++;
 	}
 
-	//str = ft_strdup(".");
-	//res = ft_open_and_read_dir(str);
+/*
+//
+// Раскоменнтируй этот кусок для последовательной передачи списка директорий твоей функции.
+//
+	printf("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+	i = 0;
+	kl->current = kl->first;
+	while (++i <= kl->dirnbr)
+	{
+		ft_open_and_read_dir(kl->current->dir);
+		kl->current = kl->current->next;
+	}
+*/
+
 	remove_list(kl);
 	return (0);
 }
-*/
 
+/*
 int		main(int argc, char **argv)
 {
 	char	*curdir;
@@ -70,3 +81,4 @@ int		main(int argc, char **argv)
 	ft_strdel(&curdir);
 	return (0);
 }
+*/
