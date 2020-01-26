@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_print_recurs_call.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/24 20:24:20 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/26 15:14:40 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_print_dir(t_fin *first)
 	while (temp != NULL)
 	{
 		if (temp->type != 2)
-			ft_printf("%-*s", len, temp->name);//, temp->chmod);
+			ft_printf("%s %-*s", temp->chmod, len, temp->name);//, temp->chmod);
 		temp = temp->next;
 	}
 	printf("\n");

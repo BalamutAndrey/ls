@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_access_rights.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:31:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/22 16:30:09 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/26 14:59:51 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ void	ft_is_it_dir_file_link(char *str, struct stat buff)
 		str[0] = 'l';
 	if (S_ISDIR(buff.st_mode))
 		str[0] = 'd';
+	if (S_ISCHR(buff.st_mode))
+		str[0] = 'c';
+	if (S_ISBLK(buff.st_mode))
+		str[0] = 'b';
+	if (S_ISFIFO(buff.st_mode))
+		str[0] = 'p';
+	if (S_ISSOCK(buff.st_mode))
+		str[0] = 's';
 }
 
 char	*ft_check_access_rights(struct stat buff)

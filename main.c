@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/26 14:40:55 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/26 15:02:35 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 int	main(int argc, char **argv)
 {
 	t_keylist	*kl;
+	int			i;
 	
 	if (!(kl = ft_ls_parsing_key(argc, argv)))
 	{
 		return (0);
 	}
+
+/*
 	printf("l = %i\n", kl->l);
 	printf("R = %i\n", kl->r_big);
 	printf("a = %i\n", kl->a);
@@ -48,12 +51,12 @@ int	main(int argc, char **argv)
 		kl->current = kl->current->next;
 		i++;
 	}
+*/
 
-/*
 //
 // Раскоменнтируй этот кусок для последовательной передачи списка директорий твоей функции.
 //
-	printf("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
+//	printf("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
 	i = 0;
 	kl->current = kl->first;
 	while (++i <= kl->dirnbr)
@@ -61,7 +64,7 @@ int	main(int argc, char **argv)
 		ft_open_and_read_dir(kl->current->dir);
 		kl->current = kl->current->next;
 	}
-*/
+
 
 	remove_list(kl);
 	return (0);
