@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/26 15:14:40 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/26 15:26:16 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_print_dir(t_fin *first)
 	while (temp != NULL)
 	{
 		if (temp->type != 2)
-			ft_printf("%s %-*s", temp->chmod, len, temp->name);//, temp->chmod);
+			ft_printf("%s %-*s\n", temp->chmod, len, temp->name);//, temp->chmod);
 		temp = temp->next;
 	}
 	printf("\n");
