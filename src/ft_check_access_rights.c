@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:31:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/26 14:59:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/26 17:21:02 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	ft_is_it_dir_file_link(char *str, struct stat buff)
 		str[0] = 's';
 }
 
-char	*ft_check_access_rights(struct stat buff)
+char	*ft_check_access_rights(struct stat buff, int xattr)
 {
 	char	*str;
 
-	if (!(str = ft_strnew(10)))
+	if (!(str = ft_strnew(11)))
 		return (NULL);
 	ft_is_it_dir_file_link(str, buff);
 	str[1] = buff.st_mode & S_IRUSR ? 'r' : '-';
@@ -46,5 +46,6 @@ char	*ft_check_access_rights(struct stat buff)
 	str[7] = buff.st_mode & S_IROTH ? 'r' : '-';
 	str[8] = buff.st_mode & S_IWOTH ? 'w' : '-';
 	str[9] = buff.st_mode & S_IXOTH ? 'x' : '-';
+	str[10] = xattr > 0 ? '@' : ' ';
 	return (str);
 }

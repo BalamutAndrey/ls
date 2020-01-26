@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   open_and_read_dir.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/24 20:24:33 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/26 17:21:05 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <stdio.h>
+#include <sys/xattr.h>
 
 void	ft_is_it_prev_cur_dir(t_fin *temp)
 {
@@ -41,7 +42,7 @@ int		ft_read_dir_cycle(DIR *dir, t_fin *first)
 		if (entry->d_namlen > 0)
 			first->name = ft_strdup(entry->d_name);
 		first->type = buff.st_mode & S_IFDIR ? 1 : 0;
-		if (ft_file_info(buff, first) != 1)
+		if (ft_file_info(buff, first, listxattr(t, NULL, 0, 0)) != 1)
 			return (-1);
 		ft_is_it_prev_cur_dir(first);
 		ft_strdel(&t);

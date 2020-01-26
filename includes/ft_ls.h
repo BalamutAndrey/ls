@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/24 20:24:26 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/26 17:22:09 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_recursive_call(t_fin *first);
 
 void	ft_delete_lists(t_fin *first);
 
-char	*ft_check_access_rights(struct stat buff);
-int		ft_file_info(struct stat buff, t_fin *first);
+char	*ft_check_access_rights(struct stat buff, int xattr);
+int		ft_file_info(struct stat buff, t_fin *first, int xattr);
 int		ft_alphabet_sort(t_fin *a, t_fin *b);
 
 #endif
