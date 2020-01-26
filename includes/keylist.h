@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/24 14:28:13 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/26 14:37:08 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct				s_keylist
 	int						o;
 	int						s_big;
 	int						g_big;
+	int						one;
+	int						c_big;
 	t_dirkeylist			*first;
 	t_dirkeylist			*current;
 	t_dirkeylist			*end;

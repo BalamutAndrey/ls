@@ -6,14 +6,11 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/26 14:18:28 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/26 14:41:20 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-#include <stdio.h>	//remove
-#include <string.h>	//remove
 
 t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 {
@@ -24,18 +21,16 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 	i = 0;
 	if (!(kl = create_keylist()))
 		return (NULL);
-	while ((argc > 1) && ++i < argc)
-		if (argv[i][0] == '-')
+	while ((argc > 1) && (++i < argc) && (argv[i][0] == '-'))
+		if ((c = ft_ls_key(kl, argv[i])) != 255)
 		{
-			if ((c = ft_ls_key(kl, argv[i])) != 255)
-			{
-				ft_printf("%s: illegal option -- %c\n", argv[0], argv[i][c]);	// Fix to ft_printf
-				ft_printf("usage: %s [-AGLRSafglortu] [file ...]\n", argv[0]);	// Fix to ft_printf
-				return (0);
-			}
+			ft_printf("%s: illegal option -- %c\n", argv[0], argv[i][c]);
+			ft_printf("usage: %s [-ACGLRSafglortu1] [file ...]\n", argv[0]);
+			return (0);
 		}
-		else
-			ft_ls_writedir(kl, argv[i]);
+	i--;
+	while ((argc > 1) && ++i < argc)
+		ft_ls_writedir(kl, argv[i]);
 	if (kl->dirnbr == 0)
 	{
 		kl->first->dir = strdup(".");
@@ -48,13 +43,13 @@ void		ft_ls_writedir(t_keylist *kl, char *argv)
 {
 	if (kl->dirnbr == 0)
 	{
-		kl->first->dir = strdup(argv);		// Fix to ft_strdup
+		kl->first->dir = ft_strdup(argv);
 		kl->dirnbr = 1;
 	}
 	else
 	{
 		kl->end = add_dkl(kl);
-		kl->end->dir = strdup(argv);		// Fix to ft_strdup
+		kl->end->dir = ft_strdup(argv);
 	}
 }
 
@@ -76,7 +71,11 @@ int			ft_ls_key(t_keylist *kl, char *argv)
 int			ft_ls_key_if_1(t_keylist *kl, char k)
 {
 	if (k == 'l')
+	{
+		kl->one = 0;
 		kl->l = 1;
+		kl->c_big = 0;
+	}
 	else if (k == 'R')
 		kl->r_big = 1;
 	else if (k == 'a')
@@ -93,10 +92,6 @@ int			ft_ls_key_if_1(t_keylist *kl, char k)
 		kl->g = 1;
 	else if (k == 'A')
 		kl->a_big = 1;
-	else if (k == 'L')
-		kl->l_big = 1;
-	else if (k == 'o')
-		kl->o = 1;
 	else
 		return (ft_ls_key_if_2(kl, k));
 	return (1);
@@ -106,8 +101,24 @@ int			ft_ls_key_if_2(t_keylist *kl, char k)
 {
 	if (k == 'G')
 		kl->g_big = 1;
+	else if (k == 'L')
+		kl->l_big = 1;
+	else if (k == 'o')
+		kl->o = 1;
 	else if (k == 'S')
 		kl->s_big = 1;
+	else if (k == '1')
+	{
+		kl->one = 1;
+		kl->l = 0;
+		kl->c_big = 0;
+	}
+	else if (k == 'C')
+	{
+		kl->one = 0;
+		kl->l = 0;
+		kl->c_big = 1;
+	}
 	else
 		return (0);
 	return (1);

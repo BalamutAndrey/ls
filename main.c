@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/26 14:27:08 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/26 14:40:55 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 int	main(int argc, char **argv)
 {
 	t_keylist	*kl;
-	//int			res;
-	//char		*str;
 	
 	if (!(kl = ft_ls_parsing_key(argc, argv)))
 	{
@@ -37,6 +35,8 @@ int	main(int argc, char **argv)
 	printf("o = %i\n", kl->o);
 	printf("G = %i\n", kl->g_big);
 	printf("S = %i\n", kl->s_big);
+	printf("1 = %i\n", kl->one);
+	printf("C = %i\n", kl->c_big);
 
 	printf("===========\n");
 	int i;
