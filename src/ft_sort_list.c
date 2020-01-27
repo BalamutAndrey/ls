@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:05:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/24 20:02:59 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/27 14:21:37 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int		ft_alphabet_sort(t_fin *a, t_fin *b)
 {
 	int		res;
 
-	res = strcmp(a->name, b->name);
+	res = ft_strcmp(a->name, b->name);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/27 13:35:31 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/27 14:22:01 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 		ft_ls_writedir(kl, argv[i]);
 	if (kl->dirnbr == 0)
 	{
-		kl->first->dir = strdup(".");
+		kl->first->dir = ft_strdup(".");
 		kl->dirnbr = 1;
 	}
 	return (kl);

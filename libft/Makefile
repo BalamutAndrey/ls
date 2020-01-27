@@ -6,7 +6,7 @@
 #    By: geliz <geliz@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/13 17:11:13 by geliz             #+#    #+#              #
-#    Updated: 2020/01/22 17:02:15 by geliz            ###   ########.fr        #
+#    Updated: 2020/01/27 14:18:15 by eboris           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = $(SRC_DIR)/ft_printf_hub.c $(SRC_DIR)/check_content.c $(SRC_DIR)/readkeys.
 	  $(SRC_DIR)/ft_isdigit.c $(SRC_DIR)/ft_isprint.c $(SRC_DIR)/ft_itoa.c $(SRC_DIR)/ft_lstadd.c \
 	  $(SRC_DIR)/ft_lstdel.c $(SRC_DIR)/ft_lstdelone.c $(SRC_DIR)/ft_lstiter.c $(SRC_DIR)/ft_lstmap.c \
 	  $(SRC_DIR)/ft_lstnew.c $(SRC_DIR)/ft_memalloc.c $(SRC_DIR)/ft_memccpy.c $(SRC_DIR)/ft_memchr.c \
-	  $(SRC_DIR)/ft_memcmp.c $(SRC_DIR)/ft_memcpy.c $(SRC_DIR)/ft_memdel.c $(SRC_DIR)/ft_memmove.c \
+	  $(SRC_DIR)/ft_memcmp.c $(SRC_DIR)/ft_memdel.c $(SRC_DIR)/ft_memmove.c \
 	  $(SRC_DIR)/ft_putchar_fd.c $(SRC_DIR)/ft_putchar.c $(SRC_DIR)/ft_putendl_fd.c $(SRC_DIR)/ft_putendl.c \
 	  $(SRC_DIR)/ft_putnbr_fd.c $(SRC_DIR)/ft_putnbr.c $(SRC_DIR)/ft_putstr_fd.c $(SRC_DIR)/ft_putstr.c \
 	  $(SRC_DIR)/ft_strchr.c $(SRC_DIR)/ft_strclr.c $(SRC_DIR)/ft_strcmp.c $(SRC_DIR)/ft_strcpy.c $(SRC_DIR)/ft_strequ.c \
