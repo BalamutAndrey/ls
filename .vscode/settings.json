@@ -1,6 +1,8 @@
 {
-	"files.associations": {
-		"main.h": "c",
-		"ft_ls.h": "c"
+	"files.associations": 
+		"libft.h": "c",
+		"ft_printf.h": "c",
+		"ft_ls.h": "c",
+		"ft_ls_structs.h": "c"
 	}
 }
