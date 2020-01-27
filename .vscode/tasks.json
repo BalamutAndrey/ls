@@ -12,8 +12,6 @@
 				"${file}",
 				"${fileDirname}/src/*.c",
 				"${fileDirname}/libft/sources/*.c",
-				//"${fileDirname}/src/parsing.c",
-				//"${fileDirname}/src/keylist.c",
 				"-I",
 				"${fileDirname}/includes/",
 				"-o",

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/27 13:50:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/27 17:03:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,35 @@ typedef struct				s_dirkeylist
 	struct s_dirkeylist		*next;
 }							t_dirkeylist;
 
+typedef	struct				s_fileinfo
+{
+	int						blocks;
+	char					*chmod;
+	int						type;
+	char					*login;
+	char					*group;
+	unsigned long long int	size;
+	char					*datacreate;
+	char					*timecreate;
+	char					*dataaccess;
+	char					*timeaccess;
+}							t_fileinfo;
+
 typedef	struct				s_fin
 {
 	char					*name;
 	char					*dir;
 	int						type;
-	char					*chmod;
+	t_fileinfo				*info;
 	struct s_fin			*next;
 }							t_fin;
+
+typedef	struct				s_maxsize
+{
+	int						login;
+	int						group;
+	int						size;
+}							t_maxsize;
 
 typedef struct				s_keylist
 {
@@ -49,6 +70,10 @@ typedef struct				s_keylist
 	t_dirkeylist			*current;
 	t_dirkeylist			*end;
 	int						dirnbr;
+	t_fin					*fin_first;
+	t_fin					*fin_current;
+	t_fin					*fin_end;
+	t_maxsize				*maxsize;
 }							t_keylist;
 
 #endif

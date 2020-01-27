@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/27 13:34:09 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/27 16:11:36 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	kl->current = kl->first;
 	while (++i <= kl->dirnbr)
 	{
-		ft_open_and_read_dir(kl->current->dir);
+		ft_open_and_read_dir(kl, kl->current->dir);
 		kl->current = kl->current->next;
 	}
 	remove_list(kl);
