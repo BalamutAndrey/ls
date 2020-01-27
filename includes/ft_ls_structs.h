@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keylist.h                                          :+:      :+:    :+:   */
+/*   ft_ls_structs.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/26 14:37:08 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/27 13:50:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYLIST_H
-# define KEYLIST_H
-
-# include <stdlib.h>
+#ifndef FT_LS_STRUCTS_H
+# define FT_LS_STRUCTS_H
 
 typedef struct				s_dirkeylist
 {
 	char					*dir;
 	struct s_dirkeylist		*next;
 }							t_dirkeylist;
+
+typedef	struct				s_fin
+{
+	char					*name;
+	char					*dir;
+	int						type;
+	char					*chmod;
+	struct s_fin			*next;
+}							t_fin;
 
 typedef struct				s_keylist
 {
@@ -43,10 +50,5 @@ typedef struct				s_keylist
 	t_dirkeylist			*end;
 	int						dirnbr;
 }							t_keylist;
-
-t_keylist					*create_keylist(void);
-t_dirkeylist				*create_dirkeylist(void);
-t_dirkeylist				*add_dkl(t_keylist *kl);
-void						remove_list(t_keylist *kl);
 
 #endif

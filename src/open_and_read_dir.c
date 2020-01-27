@@ -6,13 +6,11 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/26 17:21:05 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/27 13:39:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-#include <stdio.h>
-#include <sys/xattr.h>
 
 void	ft_is_it_prev_cur_dir(t_fin *temp)
 {

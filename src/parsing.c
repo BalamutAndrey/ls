@@ -6,11 +6,11 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/26 14:41:20 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/27 13:35:31 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "ft_ls.h"
 
 t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 {

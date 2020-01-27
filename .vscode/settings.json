@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"main.h": "c"
+		"main.h": "c",
+		"ft_ls.h": "c"
 	}
 }
