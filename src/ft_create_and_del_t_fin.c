@@ -6,32 +6,32 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:14:17 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/27 17:02:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/29 15:00:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_delete_lists(t_keylist *kl)
+void	ft_delete_lists(t_keylist *kl, t_fin *first)
 {
-	char	*tmp;
 	t_fin	*temp;
 	
-	while (kl->fin_first != NULL)
+	while (first != NULL)
 	{
-		if ((tmp = kl->fin_first->dir) != NULL)
-			ft_strdel(&tmp);
-		if ((tmp = kl->fin_first->name) != NULL)
-			ft_strdel(&tmp);
-		temp = kl->fin_first->next;
-		kl->fin_first->next = NULL;
-		kl->fin_first->type = 0;
-		free(kl->fin_first);
-		kl->fin_first = temp;
+		if (first->dir)
+			ft_strdel(&first->dir);
+		if (first->name)
+			ft_strdel(&first->name);
+		temp = first->next;
+		first->next = NULL;
+		first->type = 0;
+		free(first);
+		first = temp;
 	}
+	(void)kl; //not used
 }
 
-t_fin	*ft_create_next_t_fin(t_keylist *kl, char *dir)
+t_fin	*ft_create_next_t_fin(t_keylist *kl, t_fin *temp, char *dir)
 {
 	t_fin			*new;
 
@@ -41,8 +41,8 @@ t_fin	*ft_create_next_t_fin(t_keylist *kl, char *dir)
 	new->type = -1;
 	new->next = NULL;
 	new->info = NULL;
-	if (kl->fin_current)
-		kl->fin_current->next = new;
+	if (temp)
+		temp->next = new;
 	return (new);
-	
+	(void)kl; //not used
 }

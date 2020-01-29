@@ -6,22 +6,24 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 19:00:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/27 17:07:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/29 15:00:51 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int			ft_file_info(t_keylist *kl, struct stat buff, int xattr)
+int			ft_file_info(t_keylist *kl, struct stat buff,
+							t_fin *temp, int xattr)
 {
-	if ((kl->fin_current->info = ft_create_fileinfo()) == NULL)
+	if ((temp->info = ft_create_fileinfo()) == NULL)
 		return (0);
 	if (kl->maxsize == NULL)
 	{
 		if ((kl->maxsize = ft_create_maxsize()) == NULL)
 			return (0);
 	}
-	kl->fin_current->info->chmod = ft_check_access_rights(buff, xattr);
+	temp->info->chmod = ft_check_access_rights(buff, xattr);
+	(void)kl; //not used
 	return (1);
 }
 

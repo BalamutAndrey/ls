@@ -6,57 +6,57 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/27 17:23:28 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/29 15:06:42 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_recursive_call(t_keylist *kl)
+void	ft_recursive_call(t_keylist *kl, t_fin *first)
 {
-	kl->fin_current = kl->fin_first;
-	while (kl->fin_current != NULL)
+	t_fin	*temp;
+
+	temp = first;
+	while (first != NULL)
 	{
-		if (kl->fin_current->type == 1)
+		if (first->type == 1)
 		{
-			kl->fin_current->dir = ft_strjoin_arg("%f %s %s",
-				kl->fin_first->dir, "/", kl->fin_current->name);
-			ft_open_and_read_dir(kl, kl->fin_current->dir);
+			first->dir = ft_strjoin_arg("%f %s %s", first->dir, "/",
+				first->name);
+			ft_open_and_read_dir(kl, first->dir);
 		}
-		if (!kl->fin_current)
-			kl->fin_current = NULL;
-		else
-			kl->fin_current = kl->fin_current->next;
+		first = first->next;
 	}
 //	ft_delete_lists(temp);
 }
 
-void	ft_print_dir(t_keylist *kl)
+void	ft_print_dir(t_keylist *kl, t_fin *first)
 {
 	size_t	len;
+	t_fin	*temp;
 
-	ft_printf("\n./%s\n", kl->fin_first->dir);
+	ft_printf("\n./%s\n", first->dir);
 	len = 0;
-	kl->fin_current = kl->fin_first;
-	while (kl->fin_current->next != NULL)
+	temp = first;
+	while (first->next != NULL)
 	{
-		if (ft_strlen(kl->fin_current->name) > len)
-			len = ft_strlen(kl->fin_current->name);
-		kl->fin_current = kl->fin_current->next;
+		if (ft_strlen(first->name) > len)
+			len = ft_strlen(first->name);
+		first = first->next;
 	}
 	while (len % 8 != 0)
 		len++;
-	kl->fin_current = kl->fin_first;
-	while (kl->fin_current != NULL)
+	while (temp != NULL)
 	{
-		if (kl->fin_current->type != 2)
+		if (temp->type != 2)
 		{
-			ft_printf("%s %-*s\n", kl->fin_current->info->chmod, len,
-						kl->fin_current->name);
+			ft_printf("%s %-*s\n", temp->info->chmod, len,
+						temp->name);
 		}
-		kl->fin_current = kl->fin_current->next;
+		temp = temp->next;
 	}
 	printf("\n");
+	(void)kl; //not used
 }
 
 void	ft_split_t_fin(t_fin *first, t_fin **a, t_fin **b)
@@ -104,7 +104,7 @@ t_fin	*ft_merge(t_fin *a, t_fin *b, int (*cmp)())
 	return (result);
 }
 
-void	ft_sort_t_fin(t_fin **list, int (*cmp)())
+void	ft_sort_t_fin(t_keylist *kl, t_fin **list, int (*cmp)())
 {
 	t_fin	*first;
 	t_fin	*a;
@@ -114,8 +114,9 @@ void	ft_sort_t_fin(t_fin **list, int (*cmp)())
 	if (first && first->next)
 	{
 		ft_split_t_fin(first, &a, &b);
-		ft_sort_t_fin(&a, (*cmp));
-		ft_sort_t_fin(&b, (*cmp));
+		ft_sort_t_fin(kl, &a, (*cmp));
+		ft_sort_t_fin(kl, &b, (*cmp));
 		*list = ft_merge(a, b, (*cmp));
 	}
+	(void)kl; //not used
 }

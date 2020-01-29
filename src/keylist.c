@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:50:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/27 17:04:10 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/29 15:01:46 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ void		create_keylist_1(t_keylist *kl)
 	kl->current = kl->first;
 	kl->end = kl->first;
 	kl->dirnbr = 0;
-	kl->fin_first = NULL;
-	kl->fin_current = NULL;
-	kl->fin_end = NULL;
 	kl->maxsize = NULL;
 }
 
