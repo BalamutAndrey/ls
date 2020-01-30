@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   ft_check_date_time.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/29 17:43:18 by eboris           ###   ########.fr       */
+/*   Created: 2020/01/29 18:04:48 by eboris            #+#    #+#             */
+/*   Updated: 2020/01/30 11:29:57 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int	main(int argc, char **argv)
+int	ft_time_six_months(int time)
 {
-	t_keylist	*kl;
-	int			i;
+	time_t	c_time;
 
-	if (!(kl = ft_ls_parsing_key(argc, argv)))
-	{
-		return (0);
-	}
-	i = 0;
-	kl->current = kl->first;
-	while (++i <= kl->dirnbr)
-	{
-		ft_open_and_read_dir(kl, kl->current->dir);
-		kl->current = kl->current->next;
-	}
-	remove_list(kl);
+	time(&c_time);
+	if (((c_time - time) > 15778463) || ((c_time - time) < 0))
+		return (1);
 	return (0);
 }

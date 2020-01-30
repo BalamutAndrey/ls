@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/29 15:02:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/29 16:44:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ typedef	struct				s_fin
 
 typedef	struct				s_maxsize
 {
+	int						type;
 	int						login;
 	int						group;
 	int						size;
+	unsigned long long int	name;
 }							t_maxsize;
 
 typedef struct				s_keylist

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 17:03:37 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/22 17:01:11 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/29 16:36:05 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 char				*ft_strjoin_arg(const char *s, ...);
 int					ft_atoi_base(const char *str, int base);
+int					ft_nbrlen(unsigned long long int nb);
 #endif

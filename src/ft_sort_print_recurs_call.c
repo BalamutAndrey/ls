@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/29 15:06:42 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/29 17:33:31 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ void	ft_print_dir(t_keylist *kl, t_fin *first)
 	}
 	while (len % 8 != 0)
 		len++;
+	kl->maxsize->name = len;
 	while (temp != NULL)
 	{
-		if (temp->type != 2)
+		if ((temp->type != 2) || (kl->a > 0))
 		{
-			ft_printf("%s %-*s\n", temp->info->chmod, len,
-						temp->name);
+//			ft_printf("%s %-*s\n", temp->info->chmod, len, temp->name);
+			ft_printing(kl, temp);
 		}
 		temp = temp->next;
 	}
 	printf("\n");
-	(void)kl; //not used
 }
 
 void	ft_split_t_fin(t_fin *first, t_fin **a, t_fin **b)

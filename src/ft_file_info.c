@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 19:00:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/29 15:00:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/29 16:49:11 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int			ft_file_info(t_keylist *kl, struct stat buff,
 			return (0);
 	}
 	temp->info->chmod = ft_check_access_rights(buff, xattr);
-	(void)kl; //not used
+	temp->info->type = ft_check_nlink(kl->maxsize, buff);
+	temp->info->login = ft_check_login(kl->maxsize, buff);
+	temp->info->group = ft_check_group(kl->maxsize, buff);
+	temp->info->size = ft_check_size(kl->maxsize, buff);
 	return (1);
 }
 
@@ -54,8 +57,10 @@ t_maxsize	*ft_create_maxsize(void)
 	new = malloc(sizeof(t_maxsize));
 	if (!new)
 		return (NULL);
+	new->type = 0;
 	new->login = 0;
 	new->group = 0;
 	new->size = 0;
+	new->name = 0;
 	return (new);
 }

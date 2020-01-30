@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/29 15:05:09 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 11:30:33 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/xattr.h>
+# include <grp.h>
+# include <sys/types.h>
+# include <pwd.h>
+# include <time.h>
 # include "libft.h"
 # include "ft_printf.h"
 # include "ft_ls_structs.h"
@@ -67,8 +71,15 @@ int				ft_alphabet_sort(t_fin *a, t_fin *b);
 /*
 ** ft_check_access_rights.c
 */
-char			*ft_check_access_rights(struct stat buff, int xattr);
-void			ft_is_it_dir_file_link(char *str, struct stat buff);
+void					ft_is_it_dir_file_link(char *str, struct stat buff);
+char					*ft_check_access_rights(struct stat buff, int xattr);
+int						ft_check_nlink(t_maxsize *maxsize, struct stat buff);
+/*
+** t_check_login_group_size.c
+*/
+char					*ft_check_login(t_maxsize *maxsize, struct stat buff);
+char					*ft_check_group(t_maxsize *maxsize, struct stat buff);
+unsigned long long int	ft_check_size(t_maxsize *maxsize, struct stat buff);
 /*
 ** ft_sort_print_recurs_call.c
 */
@@ -77,5 +88,16 @@ void			ft_print_dir(t_keylist *kl, t_fin *firsts);
 void			ft_split_t_fin(t_fin *first, t_fin **a, t_fin **b);
 t_fin			*ft_merge(t_fin *a, t_fin *b, int (*cmp)());
 void			ft_sort_t_fin(t_keylist *kl, t_fin **list, int (*cmp)());
+/*
+** ft_sort_print_recurs_call.c
+*/
+int				ft_printing(t_keylist *kl, t_fin *temp);
+int				ft_printing_c(t_keylist *kl, t_fin *temp);
+int				ft_printing_1(t_keylist *kl, t_fin *temp);
+int				ft_printing_l(t_keylist *kl, t_fin *temp);
+/*
+** ft_sort_print_recurs_call.c
+*/
+int             ft_time_six_months(int time);
 
 #endif

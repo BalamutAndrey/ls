@@ -6,13 +6,13 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:31:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/26 17:21:02 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/29 16:48:43 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_is_it_dir_file_link(char *str, struct stat buff)
+void					ft_is_it_dir_file_link(char *str, struct stat buff)
 {
 	if (S_ISREG(buff.st_mode))
 		str[0] = '-';
@@ -30,7 +30,7 @@ void	ft_is_it_dir_file_link(char *str, struct stat buff)
 		str[0] = 's';
 }
 
-char	*ft_check_access_rights(struct stat buff, int xattr)
+char					*ft_check_access_rights(struct stat buff, int xattr)
 {
 	char	*str;
 
@@ -48,4 +48,16 @@ char	*ft_check_access_rights(struct stat buff, int xattr)
 	str[9] = buff.st_mode & S_IXOTH ? 'x' : '-';
 	str[10] = xattr > 0 ? '@' : ' ';
 	return (str);
+}
+
+int		ft_check_nlink(t_maxsize *maxsize, struct stat buff)
+{
+	int	n;
+	int	i;
+
+	n = buff.st_nlink;
+	i = ft_nbrlen(n);
+	if (i > maxsize->type)
+		maxsize->type = i;
+	return (n);
 }

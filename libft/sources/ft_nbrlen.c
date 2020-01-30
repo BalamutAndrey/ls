@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/29 17:43:18 by eboris           ###   ########.fr       */
+/*   Created: 2020/01/29 16:33:42 by eboris            #+#    #+#             */
+/*   Updated: 2020/01/29 16:35:40 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_nbrlen(unsigned long long int nb)
 {
-	t_keylist	*kl;
-	int			i;
+	int n;
 
-	if (!(kl = ft_ls_parsing_key(argc, argv)))
+	n = 0;
+	while (nb > 9)
 	{
-		return (0);
+		n++;
+		nb = nb / 10;
 	}
-	i = 0;
-	kl->current = kl->first;
-	while (++i <= kl->dirnbr)
-	{
-		ft_open_and_read_dir(kl, kl->current->dir);
-		kl->current = kl->current->next;
-	}
-	remove_list(kl);
-	return (0);
+	n++;
+	return (n);
 }
