@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 19:00:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/30 13:06:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 15:39:37 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,20 @@ int			ft_file_info(t_keylist *kl, struct stat buff,
 		if ((kl->maxsize = ft_create_maxsize()) == NULL)
 			return (0);
 	}
-	temp->info->chmod = ft_check_access_rights(buff, xattr);
-	temp->info->type = ft_check_nlink(kl->maxsize, buff);
-	temp->info->login = ft_check_login(kl->maxsize, buff);
-	temp->info->group = ft_check_group(kl->maxsize, buff);
-	temp->info->size = ft_check_size(kl->maxsize, buff);
 	if (kl->u == 1)
 		temp->info->time = ft_time_pars(ctime(&buff.st_atime), buff.st_atime);
 	else
 		temp->info->time = ft_time_pars(ctime(&buff.st_mtime), buff.st_mtime);
+	if ((temp->type < 2) || (kl->a > 0) ||
+		((kl->a_big > 0) && (temp->type == 3)))
+	{
+		temp->info->chmod = ft_check_access_rights(buff, xattr);
+		temp->info->type = ft_check_nlink(kl->maxsize, buff);
+		temp->info->login = ft_check_login(kl->maxsize, buff);
+		temp->info->group = ft_check_group(kl->maxsize, buff);
+		temp->info->size = ft_check_size(kl->maxsize, buff);
+		kl->maxsize->total = kl->maxsize->total + buff.st_blocks;
+	}
 	return (1);
 }
 
@@ -63,5 +68,6 @@ t_maxsize	*ft_create_maxsize(void)
 	new->group = 0;
 	new->size = 0;
 	new->name = 0;
+	new->total = 0;
 	return (new);
 }

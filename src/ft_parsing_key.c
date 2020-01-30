@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 13:09:04 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/30 13:12:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 15:38:57 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int			ft_ls_key_if_1(t_keylist *kl, char k)
 	}
 	else if (k == 'R')
 		kl->r_big = 1;
-	else if (k == 'a')
-		kl->a = 1;
 	else if (k == 'r')
 		kl->r = 1;
 	else if (k == 't')
@@ -48,13 +46,17 @@ int			ft_ls_key_if_2(t_keylist *kl, char k)
 	else if (k == 'f')
 		kl->f = 1;
 	else if (k == 'g')
+	{
 		kl->g = 1;
-	else if (k == 'A')
-		kl->a_big = 1;
+		kl->l = 1;
+	}
 	else if (k == 'L')
 		kl->l_big = 1;
 	else if (k == 'o')
+	{
 		kl->o = 1;
+		kl->l = 1;
+	}
 	else if (k == 'S')
 		kl->s_big = 1;
 	else
@@ -75,6 +77,16 @@ int			ft_ls_key_if_3(t_keylist *kl, char k)
 		kl->one = 0;
 		kl->l = 0;
 		kl->c_big = 1;
+	}
+	else if (k == 'a')
+	{
+		kl->a = 1;
+		kl->a_big = 0;
+	}
+	else if (k == 'A')
+	{
+		kl->a_big = 1;
+		kl->a = 0;
 	}
 	else
 		return (0);
