@@ -6,13 +6,13 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 16:45:46 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/29 16:46:06 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 13:14:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-char					*ft_check_login(t_maxsize *maxsize, struct stat buff)
+char		*ft_check_login(t_maxsize *maxsize, struct stat buff)
 {
 	char			*login;
 	struct passwd	*pass;
@@ -26,7 +26,7 @@ char					*ft_check_login(t_maxsize *maxsize, struct stat buff)
 	return (login);
 }
 
-char					*ft_check_group(t_maxsize *maxsize, struct stat buff)
+char		*ft_check_group(t_maxsize *maxsize, struct stat buff)
 {
 	char			*groupname;
 	struct group	*group;
@@ -40,10 +40,10 @@ char					*ft_check_group(t_maxsize *maxsize, struct stat buff)
 	return (groupname);
 }
 
-unsigned long long int	ft_check_size(t_maxsize *maxsize, struct stat buff)
+uint64_t	ft_check_size(t_maxsize *maxsize, struct stat buff)
 {
-	unsigned long long int	n;
-	int						i;
+	uint64_t	n;
+	int			i;
 
 	n = buff.st_size;
 	i = ft_nbrlen(n);

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/30 12:12:57 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 13:14:08 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_LS_H
 
 # include <dirent.h>
+# include <stdint.h>
 # include <sys/stat.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -31,7 +32,7 @@
 */
 int				main(int argc, char **argv);
 /*
-** keylist.c
+** ft_keylist.c
 */
 t_keylist		*create_keylist(void);
 void			create_keylist_1(t_keylist *kl);
@@ -39,15 +40,19 @@ t_dirkeylist	*create_dirkeylist(void);
 t_dirkeylist	*add_dkl(t_keylist *kl);
 void			remove_list(t_keylist *kl);
 /*
-** parsing.c
+** ft_parsing.c
 */
 t_keylist		*ft_ls_parsing_key(int argc, char **argv);
 void			ft_ls_writedir(t_keylist *kl, char *argv);
 int				ft_ls_key(t_keylist *kl, char *argv);
+/*
+** ft_parsing_key.c
+*/
 int				ft_ls_key_if_1(t_keylist *kl, char k);
 int				ft_ls_key_if_2(t_keylist *kl, char k);
+int 			ft_ls_key_if_3(t_keylist *kl, char k);
 /*
-** open_and_read_dir.c
+** ft_open_and_read_dir.c
 */
 int				ft_open_and_read_dir(t_keylist *kl, char *cur);
 int				ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first);
@@ -71,15 +76,15 @@ int				ft_alphabet_sort(t_fin *a, t_fin *b);
 /*
 ** ft_check_access_rights.c
 */
-void					ft_is_it_dir_file_link(char *str, struct stat buff);
-char					*ft_check_access_rights(struct stat buff, int xattr);
-int						ft_check_nlink(t_maxsize *maxsize, struct stat buff);
+void			ft_is_it_dir_file_link(char *str, struct stat buff);
+char			*ft_check_access_rights(struct stat buff, int xattr);
+int				ft_check_nlink(t_maxsize *maxsize, struct stat buff);
 /*
 ** t_check_login_group_size.c
 */
-char					*ft_check_login(t_maxsize *maxsize, struct stat buff);
-char					*ft_check_group(t_maxsize *maxsize, struct stat buff);
-unsigned long long int	ft_check_size(t_maxsize *maxsize, struct stat buff);
+char			*ft_check_login(t_maxsize *maxsize, struct stat buff);
+char			*ft_check_group(t_maxsize *maxsize, struct stat buff);
+uint64_t	    ft_check_size(t_maxsize *maxsize, struct stat buff);
 /*
 ** ft_sort_print_recurs_call.c
 */
@@ -99,6 +104,6 @@ int				ft_printing_l(t_keylist *kl, t_fin *temp);
 ** ft_sort_print_recurs_call.c
 */
 int	            ft_time_six_months(int t, char *src, char *str);
-char	        *ft_time_parsing(char *src, int t);
+char	        *ft_time_pars(char *src, int t);
 
 #endif

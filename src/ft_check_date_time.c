@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 18:04:48 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/30 12:43:10 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 13:07:18 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ int	ft_time_six_months(int t, char *src, char *str)
 	return (1);
 }
 
-char	*ft_time_parsing(char *src, int t)
+char	*ft_time_pars(char *src, int t)
 {
 	char	*str;
 
-	str = ft_strnew(12);
+	if ((str = ft_strnew(12)) == NULL)
+		return (NULL);
 	str[0] = src[4];
 	str[1] = src[5];
 	str[2] = src[6];

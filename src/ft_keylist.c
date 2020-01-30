@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keylist.c                                          :+:      :+:    :+:   */
+/*   ft_keylist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:50:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/29 15:01:46 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 13:08:36 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void		create_keylist_1(t_keylist *kl)
 t_dirkeylist	*create_dirkeylist(void)
 {
 	t_dirkeylist	*dkl;
+
 	dkl = (t_dirkeylist *)malloc(sizeof(t_dirkeylist));
 	if (!dkl)
 		return (NULL);
@@ -61,7 +62,7 @@ t_dirkeylist	*create_dirkeylist(void)
 t_dirkeylist	*add_dkl(t_keylist *kl)
 {
 	t_dirkeylist	*dkl;
-	
+
 	dkl = create_dirkeylist();
 	if (!dkl)
 		return (NULL);
