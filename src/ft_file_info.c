@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 19:00:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/29 16:49:11 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 12:16:48 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int			ft_file_info(t_keylist *kl, struct stat buff,
 	temp->info->login = ft_check_login(kl->maxsize, buff);
 	temp->info->group = ft_check_group(kl->maxsize, buff);
 	temp->info->size = ft_check_size(kl->maxsize, buff);
+	temp->info->time = ft_time_parsing(ctime(&buff.st_mtime), buff.st_mtime);
 	return (1);
 }
 
@@ -43,10 +44,7 @@ t_fileinfo	*ft_create_fileinfo(void)
 	new->login = NULL;
 	new->group = NULL;
 	new->size = 0;
-	new->datacreate = NULL;
-	new->timecreate = NULL;
-	new->dataaccess = NULL;
-	new->timeaccess = NULL;
+	new->time = NULL;
 	return (new);
 }
 

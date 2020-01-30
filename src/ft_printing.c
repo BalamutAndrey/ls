@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:10:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/29 17:47:30 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 12:37:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	ft_printing_1(t_keylist *kl, t_fin *temp)
 
 int	ft_printing_l(t_keylist *kl, t_fin *temp)
 {
-	ft_printf("%s %*i %-*s  %-*s  %*lld %s\n", temp->info->chmod,
+	ft_printf("%s %*i %-*s  %-*s  %*lld %s %s\n", temp->info->chmod,
 		kl->maxsize->type, temp->info->type, kl->maxsize->login,
 		temp->info->login, kl->maxsize->group, temp->info->group,
-		kl->maxsize->size, temp->info->size, temp->name);
+		kl->maxsize->size, temp->info->size, temp->info->time, temp->name);
 	return (1);
 }

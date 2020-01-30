@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/29 16:44:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 12:16:24 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ typedef	struct				s_fileinfo
 	char					*login;
 	char					*group;
 	unsigned long long int	size;
-	char					*datacreate;
-	char					*timecreate;
-	char					*dataaccess;
-	char					*timeaccess;
+	char					*time;
 }							t_fileinfo;
 
 typedef	struct				s_fin

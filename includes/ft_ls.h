@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/30 11:30:33 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 12:12:57 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int				ft_printing_l(t_keylist *kl, t_fin *temp);
 /*
 ** ft_sort_print_recurs_call.c
 */
-int             ft_time_six_months(int time);
+int	            ft_time_six_months(int t, char *src, char *str);
+char	        *ft_time_parsing(char *src, int t);
 
 #endif
