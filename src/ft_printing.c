@@ -6,42 +6,45 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:10:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/30 15:34:07 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 19:01:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int	ft_printing(t_keylist *kl, t_fin *temp)
+void	ft_printing(t_keylist *kl, t_fin *temp)
 {
-	if ((temp->type < 2) || (kl->a > 0) ||
-		((kl->a_big > 0) && (temp->type == 3)))
+	int64_t	l;
+
+	l = 0;
+	if ((kl->one != 1) && (kl->l != 1) && (kl->x != 1))
+		ft_printing_c(kl, temp);
+	while (temp != NULL)
 	{
-		if (kl->l == 1)
-			ft_printing_l(kl, temp);
-		else if (kl->one == 1)
-			ft_printing_1(kl, temp);
-		else if (kl->c_big == 1)
-			ft_printing_c(kl, temp);
-		else
-			ft_printing_c(kl, temp);
+		if ((temp->type < 2) || (kl->a > 0) ||
+			((kl->a_big > 0) && (temp->type == 3)))
+		{
+			if (kl->l == 1)
+				ft_printing_l(kl, temp);
+			else if (kl->one == 1)
+				ft_printing_1(kl, temp);
+			else if (kl->x == 1)
+				ft_printing_x(kl, temp, &l);
+			l++;
+		}
+		temp = temp->next;
 	}
-	return (1);
+	if ((kl->one != 1) && (kl->l != 1))
+		printf("\n");
 }
 
-int	ft_printing_c(t_keylist *kl, t_fin *temp)
-{
-	ft_printf("%-*s ", kl->maxsize->name, temp->name);
-	return (1);
-}
-
-int	ft_printing_1(t_keylist *kl, t_fin *temp)
+int		ft_printing_1(t_keylist *kl, t_fin *temp)
 {
 	ft_printf("%-*s\n", kl->maxsize->name, temp->name);
 	return (1);
 }
 
-int	ft_printing_l(t_keylist *kl, t_fin *temp)
+int		ft_printing_l(t_keylist *kl, t_fin *temp)
 {
 	ft_printf("%s %*i ", temp->info->chmod,
 		kl->maxsize->type, temp->info->type);
@@ -54,4 +57,12 @@ int	ft_printing_l(t_keylist *kl, t_fin *temp)
 	ft_printf("%*lld %s %s\n", kl->maxsize->size, temp->info->size,
 				temp->info->time, temp->name);
 	return (1);
+}
+
+int		ft_ioctl(void)
+{
+	struct winsize w;
+
+	ioctl(0, TIOCGWINSZ, &w);
+	return (w.ws_col);
 }

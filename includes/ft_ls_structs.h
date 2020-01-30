@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/30 14:19:01 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 18:49:37 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef	struct				s_fileinfo
 	int						type;
 	char					*login;
 	char					*group;
-	unsigned long long int	size;
+	uint64_t				size;
 	char					*time;
 }							t_fileinfo;
 
@@ -45,8 +45,11 @@ typedef	struct				s_maxsize
 	int						login;
 	int						group;
 	int						size;
-	unsigned long long int	name;
+	int64_t					name;
+	int						col;
+	int						row;
 	int						total;
+	int						totalfile;
 }							t_maxsize;
 
 typedef struct				s_keylist
@@ -59,6 +62,7 @@ typedef struct				s_keylist
 	int						u;
 	int						f;
 	int						g;
+	int						x;
 	int						a_big;
 	int						l_big;
 	int						o;

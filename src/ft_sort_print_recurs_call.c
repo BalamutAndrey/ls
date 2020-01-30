@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/30 14:32:03 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 17:59:56 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	ft_recursive_call(t_keylist *kl, t_fin *first)
 		{
 			first->dir = ft_strjoin_arg("%f %s %s", first->dir, "/",
 				first->name);
+			ft_printf("\n");
+			ft_printf("%s:\n", first->dir);
 			ft_open_and_read_dir(kl, first->dir);
 		}
 		first = first->next;
@@ -35,8 +37,6 @@ void	ft_print_dir(t_keylist *kl, t_fin *first)
 	size_t	len;
 	t_fin	*temp;
 
-	if (kl->r_big == 1)
-		ft_printf("%s\n", first->dir);
 	len = 0;
 	temp = first;
 	while (first->next != NULL)
@@ -45,16 +45,14 @@ void	ft_print_dir(t_keylist *kl, t_fin *first)
 			len = ft_strlen(first->name);
 		first = first->next;
 	}
+	if (len % 8 == 0)
+		len++;
 	while (len % 8 != 0)
 		len++;
 	kl->maxsize->name = len;
 	if (kl->l == 1)
 		ft_printf("total %i\n", kl->maxsize->total);
-	while (temp != NULL)
-	{
-		ft_printing(kl, temp);
-		temp = temp->next;
-	}
+	ft_printing(kl, temp);
 }
 
 void	ft_split_t_fin(t_fin *first, t_fin **a, t_fin **b)

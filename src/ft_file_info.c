@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 19:00:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/30 15:39:37 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 18:50:01 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,8 @@ t_maxsize	*ft_create_maxsize(void)
 	new->size = 0;
 	new->name = 0;
 	new->total = 0;
+	new->col = 0;
+	new->row = 0;
+	new->totalfile = 0;
 	return (new);
 }

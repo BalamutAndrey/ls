@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/30 13:14:08 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/30 19:03:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/xattr.h>
+# include <sys/ioctl.h>
 # include <grp.h>
 # include <sys/types.h>
 # include <pwd.h>
@@ -51,6 +52,7 @@ int				ft_ls_key(t_keylist *kl, char *argv);
 int				ft_ls_key_if_1(t_keylist *kl, char k);
 int				ft_ls_key_if_2(t_keylist *kl, char k);
 int 			ft_ls_key_if_3(t_keylist *kl, char k);
+int 			ft_ls_key_if_4(t_keylist *kl, char k);
 /*
 ** ft_open_and_read_dir.c
 */
@@ -94,12 +96,18 @@ void			ft_split_t_fin(t_fin *first, t_fin **a, t_fin **b);
 t_fin			*ft_merge(t_fin *a, t_fin *b, int (*cmp)());
 void			ft_sort_t_fin(t_keylist *kl, t_fin **list, int (*cmp)());
 /*
-** ft_sort_print_recurs_call.c
+** ft_printing.c
 */
-int				ft_printing(t_keylist *kl, t_fin *temp);
-int				ft_printing_c(t_keylist *kl, t_fin *temp);
+void			ft_printing(t_keylist *kl, t_fin *temp);
 int				ft_printing_1(t_keylist *kl, t_fin *temp);
 int				ft_printing_l(t_keylist *kl, t_fin *temp);
+int             ft_ioctl(void);
+/*
+** ft_printiing_col.c
+*/
+int				ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l);
+void       		ft_printing_c_math(t_keylist *kl, t_fin *temp);
+int				ft_printing_c(t_keylist *kl, t_fin *temp);
 /*
 ** ft_sort_print_recurs_call.c
 */
