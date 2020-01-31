@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:05:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 18:20:15 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/31 18:47:41 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_size_sort(t_fin *a, t_fin *b)
 
 	a_in = a->info;
 	b_in = b->info;
-	if (a_in->size > b_in->size)
+	if (a_in->size < b_in->size)
 		return (1);
 	if (a_in->size == b_in->size)
 		return (0);
@@ -37,12 +37,16 @@ int		ft_size_sort(t_fin *a, t_fin *b)
 
 int		ft_time_access_sort(t_fin *a, t_fin *b)
 {
+	(void)a;
+	(void)b;
 	return (0);
 }
 
 int		ft_time_mod_sort(t_fin *a, t_fin *b)
 {
 	int		res;
+	(void)a;
+	(void)b;
 
 	res = 0;
 	return (res);

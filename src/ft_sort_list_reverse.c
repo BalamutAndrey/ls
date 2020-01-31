@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:12:43 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 18:20:08 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/31 18:47:28 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,29 @@ int		ft_alphabet_rev_sort(t_fin *a, t_fin *b)
 
 int		ft_size_rev_sort(t_fin *a, t_fin *b)
 {
-	return (0);
+	t_fileinfo	*a_in;
+	t_fileinfo	*b_in;
+
+	a_in = a->info;
+	b_in = b->info;
+	if (a_in->size > b_in->size)
+		return (1);
+	if (a_in->size == b_in->size)
+		return (0);
+	else
+		return (-1);
 }
 
 int		ft_time_access_rev_sort(t_fin *a, t_fin *b)
 {
+	(void)a;
+	(void)b;
 	return (0);
 }
 
 int		ft_time_mod_rev_sort(t_fin *a, t_fin *b)
 {
+	(void)a;
+	(void)b;
 	return (0);
 }
