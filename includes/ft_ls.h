@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 17:46:08 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 18:19:54 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,17 @@ t_maxsize		*ft_create_maxsize(void);
 ** ft_sort_list.c
 */
 int				ft_alphabet_sort(t_fin *a, t_fin *b);
+int		        ft_time_mod_sort(t_fin *a, t_fin *b);
+int	        	ft_time_access_sort(t_fin *a, t_fin *b);
+int     		ft_size_sort(t_fin *a, t_fin *b);
 void            ft_sort_list(t_keylist *kl, t_fin **list);
+/*
+** ft_sort_list_reverse.c
+*/
+int	        	ft_time_access_rev_sort(t_fin *a, t_fin *b);
+int	        	ft_size_rev_sort(t_fin *a, t_fin *b);
+int		        ft_alphabet_rev_sort(t_fin *a, t_fin *b);
+int		        ft_time_mod_rev_sort(t_fin *a, t_fin *b);
 /*
 ** ft_check_access_rights.c
 */
@@ -114,7 +124,7 @@ int				ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l);
 void       		ft_printing_c_math(t_keylist *kl, t_fin *temp);
 int				ft_printing_c(t_keylist *kl, t_fin *temp);
 /*
-** ft_sort_print_recurs_call.c
+** ft_check_date_time.c
 */
 int	            ft_time_six_months(int t, char *src, char *str);
 char	        *ft_time_pars(char *src, int t);
