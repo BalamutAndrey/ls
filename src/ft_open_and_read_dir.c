@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 15:32:18 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 16:15:40 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int		ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first)
 			first = ft_create_next_t_fin(kl, first, first->dir);
 		t = ft_strjoin_arg("%s %s %s", first->dir, "/", entry->d_name);
 		//err = entry->d_type == DT_LNK ? lstat(t, &buff) : stat(t, &buff);
-		err = ft_read_dir_cycle_stat(first, entry, &buff, t);
+		if ((entry->d_type == DT_LNK) && (kl->l_big == 0))
+			err = ft_read_dir_cycle_lstat(first, &buff, t);
+		else
+			err = ft_read_dir_cycle_stat(&buff, t);
 		if (err != 0)
 			return (-1);
 		if (entry->d_namlen > 0)
@@ -53,29 +56,29 @@ int		ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first)
 	return (0);
 }
 
-int		ft_read_dir_cycle_stat(t_fin *first, struct dirent *entry,
-								struct stat *buff, char *t)
+int		ft_read_dir_cycle_lstat(t_fin *first, struct stat *buff, char *t)
 {
 	int		err;
 	char	*linkto;
 
-	if (entry->d_type == DT_LNK)
+	err = lstat(t, buff);
+	linkto = malloc(257 * sizeof(char));
+	linkto[256] = '\0';
+	if (err == 0)
 	{
-		err = lstat(t, buff);
-		linkto = malloc(257 * sizeof(char));
-		linkto[256] = '\0';
-		if (err == 0)
-		{
-			err = readlink(t, linkto, 255);
-			if (err > 0)
-				first->linkto = ft_strdup(linkto);
-			err = 0;
-		}
+		err = readlink(t, linkto, 255);
+		if (err > 0)
+			first->linkto = ft_strdup(linkto);
+		err = 0;
 	}
-	else
-	{
-		err = stat(t, buff);
-	}
+	return (err);
+}
+
+int		ft_read_dir_cycle_stat(struct stat *buff, char *t)
+{
+	int	err;
+
+	err = stat(t, buff);
 	return (err);
 }
 
