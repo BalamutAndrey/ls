@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 16:15:39 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 17:26:17 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <sys/types.h>
 # include <pwd.h>
 # include <time.h>
+# include <errno.h>
 # include "libft.h"
 # include "ft_printf.h"
 # include "ft_ls_structs.h"
@@ -116,5 +117,8 @@ int				ft_printing_c(t_keylist *kl, t_fin *temp);
 */
 int	            ft_time_six_months(int t, char *src, char *str);
 char	        *ft_time_pars(char *src, int t);
-
+/*
+** ft_print_error.c
+*/
+void	        ft_print_error(char	*cur);
 #endif

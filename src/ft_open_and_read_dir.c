@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open_and_read_dir.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 16:15:40 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 17:28:55 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,17 @@ int		ft_open_and_read_dir(t_keylist *kl, char *cur)
 		return (0);
 	first = ft_create_next_t_fin(kl, NULL, cur);
 	dir = opendir(cur);
+	if (dir == NULL)
+	{
+		if (errno == 20) //это проверка на "не директория", будет убрана после правильной сортировки в мейне
+			return (-1);
+		ft_print_error(cur);
+		return (0);
+	}
 	if (ft_read_dir_cycle(kl, dir, first) == -1)
 		return (0);
-	ft_sort_t_fin(kl, &first, (*ft_alphabet_sort));
+	ft_sort_list(kl, &first);
+//	ft_sort_t_fin(kl, &first, (*ft_alphabet_sort));
 	ft_print_dir(kl, first);
 	if (kl->r_big == 1)
 		ft_recursive_call(kl, first);
