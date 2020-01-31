@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/30 14:37:55 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 15:32:18 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int		ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first)
 		if (first->name)
 			first = ft_create_next_t_fin(kl, first, first->dir);
 		t = ft_strjoin_arg("%s %s %s", first->dir, "/", entry->d_name);
-		err = entry->d_type == DT_LNK ? lstat(t, &buff) : stat(t, &buff);
+		//err = entry->d_type == DT_LNK ? lstat(t, &buff) : stat(t, &buff);
+		err = ft_read_dir_cycle_stat(first, entry, &buff, t);
 		if (err != 0)
 			return (-1);
 		if (entry->d_namlen > 0)
@@ -50,6 +51,32 @@ int		ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first)
 		ft_strdel(&t);
 	}
 	return (0);
+}
+
+int		ft_read_dir_cycle_stat(t_fin *first, struct dirent *entry,
+								struct stat *buff, char *t)
+{
+	int		err;
+	char	*linkto;
+
+	if (entry->d_type == DT_LNK)
+	{
+		err = lstat(t, buff);
+		linkto = malloc(257 * sizeof(char));
+		linkto[256] = '\0';
+		if (err == 0)
+		{
+			err = readlink(t, linkto, 255);
+			if (err > 0)
+				first->linkto = ft_strdup(linkto);
+			err = 0;
+		}
+	}
+	else
+	{
+		err = stat(t, buff);
+	}
+	return (err);
 }
 
 int		ft_open_and_read_dir(t_keylist *kl, char *cur)

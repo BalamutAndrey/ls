@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/30 18:49:37 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 15:02:05 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef	struct				s_fileinfo
 typedef	struct				s_fin
 {
 	char					*name;
+	char					*linkto;
 	char					*dir;
 	int						type;
 	t_fileinfo				*info;

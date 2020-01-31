@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:10:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/30 19:01:38 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 15:25:26 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ int		ft_printing_l(t_keylist *kl, t_fin *temp)
 		ft_printf("%-*s  ", kl->maxsize->group, temp->info->group);
 	if ((kl->g == 1) && (kl->o == 1))
 		ft_printf("  ");
-	ft_printf("%*lld %s %s\n", kl->maxsize->size, temp->info->size,
+	ft_printf("%*lld %s %s", kl->maxsize->size, temp->info->size,
 				temp->info->time, temp->name);
+	if (temp->linkto != NULL)
+		ft_printf(" -> %s", temp->linkto);
+	ft_printf("\n");
 	return (1);
 }
 

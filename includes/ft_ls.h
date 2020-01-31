@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/30 19:03:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 15:30:01 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int 			ft_ls_key_if_4(t_keylist *kl, char k);
 */
 int				ft_open_and_read_dir(t_keylist *kl, char *cur);
 int				ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first);
+int             ft_read_dir_cycle_stat(t_fin *first, struct dirent *entry,
+                                        struct stat *buff, char *t);
 void			ft_is_it_prev_cur_dir(t_keylist *kl, t_fin *temp);
 /*
 ** ft_create_and_del_t_fin.c
