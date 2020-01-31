@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 17:26:17 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/31 17:46:08 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_maxsize		*ft_create_maxsize(void);
 ** ft_sort_list.c
 */
 int				ft_alphabet_sort(t_fin *a, t_fin *b);
+void            ft_sort_list(t_keylist *kl, t_fin **list);
 /*
 ** ft_check_access_rights.c
 */
@@ -120,5 +121,6 @@ char	        *ft_time_pars(char *src, int t);
 /*
 ** ft_print_error.c
 */
-void	        ft_print_error(char	*cur);
+void	        ft_print_error(t_keylist *kl, char	*cur);
+void	        ft_print_illegal_option(char *filename, char c);
 #endif

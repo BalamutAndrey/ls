@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open_and_read_dir.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 17:28:55 by geliz            ###   ########.fr       */
+/*   Updated: 2020/01/31 17:44:20 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		ft_open_and_read_dir(t_keylist *kl, char *cur)
 	{
 		if (errno == 20) //это проверка на "не директория", будет убрана после правильной сортировки в мейне
 			return (-1);
-		ft_print_error(cur);
+		ft_print_error(kl, cur);
 		return (0);
 	}
 	if (ft_read_dir_cycle(kl, dir, first) == -1)

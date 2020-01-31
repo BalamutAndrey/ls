@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/30 13:12:48 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 17:41:30 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 	i = 0;
 	if (!(kl = create_keylist()))
 		return (NULL);
+	kl->programm_name = ft_strdup(argv[0]);
 	while ((argc > 1) && (++i < argc) && (argv[i][0] == '-'))
 		if ((c = ft_ls_key(kl, argv[i])) != 255)
 		{
-			ft_printf("%s: illegal option -- %c\n", argv[0], argv[i][c]);
-			ft_printf("usage: %s [-ACGLRSafglortu1] [file ...]\n", argv[0]);
+			//ft_printf("%s: illegal option -- %c\n", argv[0], argv[i][c]);
+			//ft_printf("usage: %s [-ACGLRSafglortu1] [file ...]\n", argv[0]);
+			ft_print_illegal_option(argv[0], argv[i][c]);
 			return (0);
 		}
 	i--;

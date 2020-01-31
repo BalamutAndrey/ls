@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/31 15:02:05 by eboris           ###   ########.fr       */
+/*   Updated: 2020/01/31 18:11:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef	struct				s_fileinfo
 	char					*group;
 	uint64_t				size;
 	char					*time;
+	int						mtime;
+	int						atime;
 }							t_fileinfo;
 
 typedef	struct				s_fin
@@ -55,6 +57,7 @@ typedef	struct				s_maxsize
 
 typedef struct				s_keylist
 {
+	char					*programm_name;
 	int						l;
 	int						r_big;
 	int						a;
