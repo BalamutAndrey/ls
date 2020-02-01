@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open_and_read_dir.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 17:44:20 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/01 12:07:12 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_is_it_prev_cur_dir(t_keylist *kl, t_fin *temp)
 	{
 		temp->type = 2;
 	}
-	if ((temp->type != 2) && (temp->name[0] == '.'))
+	if ((kl->a != 1) &&(temp->type != 2) && (temp->name[0] == '.'))
 		temp->type = 3; /*hidden files*/
 	(void)kl; //not used
 }
