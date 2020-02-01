@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:29:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/22 13:33:14 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/01 16:16:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int		main(int argc, char **argv)
 		printf("Cannot open file.\n");
 		return (0);
 	}
-	stat(fn, &buff);
+	lstat(fn, &buff);
 	printf("\nfilename is:\t\t\t%s\n", fn);
 	ft_print_file_stat(buff);
 

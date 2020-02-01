@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${fileDirname}/${fileBasenameNoExtension}",
 			//"args": ["../../../../../var/run"],
-			"args": ["-la", "test/3"],
+			"args": ["-l", "Makefile", "author"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

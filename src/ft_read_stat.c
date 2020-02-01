@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   ft_read_stat.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/01 17:07:46 by eboris           ###   ########.fr       */
+/*   Created: 2020/02/01 13:12:43 by eboris            #+#    #+#             */
+/*   Updated: 2020/02/01 13:13:11 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int	main(int argc, char **argv)
+int		ft_read_dir_cycle_lstat(t_fin *first, struct stat *buff, char *t)
 {
-	t_keylist	*kl;
-	int			i;
+	int		err;
+	char	*linkto;
 
-	if (!(kl = ft_ls_parsing_key(argc, argv)))
+	err = lstat(t, buff);
+	linkto = malloc(257 * sizeof(char));
+	linkto[256] = '\0';
+	if (err == 0)
 	{
-		return (0);
+		err = readlink(t, linkto, 255);
+		if (err > 0)
+			first->linkto = ft_strdup(linkto);
+		err = 0;
 	}
-	i = 0;
-	kl->current = kl->first;
-	while (++i <= kl->dirnbr)
-	{
-		ft_open_and_read_dir(kl, kl->current->dir);
-		kl->current = kl->current->next;
-		if ((i + 1) <= kl->dirnbr)
-			ft_printf("\n");
-	}
-	remove_list(kl);
-	return (0);
+	return (err);
+}
+
+int		ft_read_dir_cycle_stat(struct stat *buff, char *t)
+{
+	int	err;
+
+	err = stat(t, buff);
+	return (err);
 }

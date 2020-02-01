@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/31 18:11:15 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/01 17:09:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef struct				s_keylist
 	t_dirkeylist			*first;
 	t_dirkeylist			*current;
 	t_dirkeylist			*end;
+	int						*isfile;
+	t_fin					*t_first;
 	int						dirnbr;
 	t_maxsize				*maxsize;
 }							t_keylist;

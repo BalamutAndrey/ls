@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/31 17:41:30 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/01 17:18:16 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,49 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 	while ((argc > 1) && (++i < argc) && (argv[i][0] == '-'))
 		if ((c = ft_ls_key(kl, argv[i])) != 255)
 		{
-			//ft_printf("%s: illegal option -- %c\n", argv[0], argv[i][c]);
-			//ft_printf("usage: %s [-ACGLRSafglortu1] [file ...]\n", argv[0]);
 			ft_print_illegal_option(argv[0], argv[i][c]);
 			return (0);
 		}
 	i--;
 	while ((argc > 1) && ++i < argc)
 		ft_ls_writedir(kl, argv[i]);
-	if (kl->dirnbr == 0)
+	if ((kl->dirnbr == 0) && (kl->t_first == NULL))
 	{
 		kl->first->dir = ft_strdup(".");
 		kl->dirnbr = 1;
+	}
+	if (kl->t_first != NULL)
+	{
+		ft_dir_sort_print(kl, kl->t_first);
+		if (kl->dirnbr > 0)
+			ft_printf("\n");
+		kl->t_first = NULL;
 	}
 	return (kl);
 }
 
 void		ft_ls_writedir(t_keylist *kl, char *argv)
 {
-	if (kl->dirnbr == 0)
+	DIR		*dir;
+
+	dir = opendir(argv);
+	if ((dir == NULL) && (errno == 20))
 	{
-		kl->first->dir = ft_strdup(argv);
-		kl->dirnbr = 1;
+		ft_create_tempdir(kl, argv);
+		kl->isfile += 1;
 	}
 	else
 	{
-		kl->end = add_dkl(kl);
-		kl->end->dir = ft_strdup(argv);
+		if (kl->dirnbr == 0)
+		{
+			kl->first->dir = ft_strdup(argv);
+			kl->dirnbr = 1;
+		}
+		else
+		{
+			kl->end = add_dkl(kl);
+			kl->end->dir = ft_strdup(argv);
+		}
 	}
 }
 

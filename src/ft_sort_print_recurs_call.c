@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_print_recurs_call.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 17:26:14 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/01 17:14:16 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ void	ft_print_dir(t_keylist *kl, t_fin *first)
 	while (len % 8 != 0)
 		len++;
 	kl->maxsize->name = len;
-	if (kl->l == 1)
+	if (((kl->isfile > 0) && (kl->t_first == NULL)) ||
+		((kl->dirnbr > 1) && (kl->t_first == NULL)))
+		ft_printf("%s:\n", first->dir);
+	if ((kl->l == 1) && (kl->t_first == NULL))
 		ft_printf("total %i\n", kl->maxsize->total);
 	ft_printing(kl, temp);
 }

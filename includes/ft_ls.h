@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 18:19:54 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/01 16:52:33 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,25 @@ int				ft_ls_key_if_2(t_keylist *kl, char k);
 int 			ft_ls_key_if_3(t_keylist *kl, char k);
 int 			ft_ls_key_if_4(t_keylist *kl, char k);
 /*
+** ft_parsing_file_check.c
+*/
+int	            ft_create_tempdir(t_keylist *kl, char *filename);
+void	        ft_check_file_link(t_fin *first, char *fn);
+/*
 ** ft_open_and_read_dir.c
 */
 int				ft_open_and_read_dir(t_keylist *kl, char *cur);
 int				ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first);
+int     		ft_read_dir_cycle_write(t_keylist *kl, t_fin *first,
+								struct dirent *entry, char *t);
+void			ft_is_it_prev_cur_dir(t_keylist *kl, t_fin *temp);
+int		        ft_dir_sort_print(t_keylist *kl, t_fin *first);
+/*
+** ft_read_stat.c
+*/
 int             ft_read_dir_cycle_lstat(t_fin *first, struct stat *buff,
                                         char *t);
 int             ft_read_dir_cycle_stat(struct stat *buff, char *t);
-void			ft_is_it_prev_cur_dir(t_keylist *kl, t_fin *temp);
 /*
 ** ft_create_and_del_t_fin.c
 */
