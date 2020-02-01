@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printiing_col.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:37:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/30 19:07:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/01 20:17:15 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+#include "temp.h"
 
 int		ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l)
 {
@@ -26,54 +27,83 @@ int		ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l)
 	return (1);
 }
 
-void		ft_printing_c_math(t_keylist *kl, t_fin *temp)
+void	ft_fill_in(t_printcols *in, t_fin *first)
 {
-	t_fin	*t;
 	int		i;
-	int		n;
-	int		y;
-	int		z;
+	int		len;
+	t_fin	*temp;
 
-	t = temp;
-	n = 0;
-	i = ft_ioctl();
-	while (t != NULL)
+	in->term_width = ft_ioctl();
+	in->file_quanity = 0;
+	in->file_maxlen = 0;
+	temp = first;
+	while (temp)
 	{
-		if ((t->type < 2) || (kl->a > 0) || ((kl->a_big > 0) && (t->type == 3)))
-			n++;
-		t = t->next;
+		len = ft_strlen(temp->name);
+		if (len > in->file_maxlen)
+			in->file_maxlen = len;
+		in->file_quanity++;
+		temp = temp->next;
 	}
-	z = i / (kl->maxsize->name);
-	if (z != 0)
-		y = n / z;
+	while (in->file_maxlen % 8 != 0)
+		in->file_maxlen++;
+	if (in->file_maxlen > in->term_width)
+	{
+		in->file_cols = 1;
+		in->file_rows = in->file_quanity;
+	}
 	else
-		y = kl->maxsize->name;
-	if ((z != 0) && ((n % z) != 0))
-		y++;
-	printf("col = %i, row = %i, total files = %i\n", z, y, n); //remove!!!
-	kl->maxsize->col = z;
-	kl->maxsize->row = y;
-	kl->maxsize->totalfile = n;
+	{
+
+		i = in->file_maxlen * in->file_quanity;
+		in->file_cols = in->term_width / in->file_maxlen;
+		in->file_rows = in->file_quanity / in->file_cols;
+		if (in->file_quanity % in->file_cols > 0)
+			in->file_rows++;
+	}
 }
 
-int		ft_printing_c(t_keylist *kl, t_fin *temp)
+int		ft_printing_c(t_keylist *kl, t_fin *first)
 {
-	t_fin	*t;
-	int		i;
-	int		z;
+	t_printcols	in;
+	t_fin		*temp;
+	int			printed;
+	int			cur_pos;
+	int			next_pos;
+	int			new_row;
+	int			tabs;
 
-	i = 2;
-	ft_printing_c_math(kl, temp);
-	ft_printf("%-*s", kl->maxsize->name, temp->name);
-	while (i < kl->maxsize->totalfile)
+	ft_fill_in(&in, first);
+	printed = 0;
+	cur_pos = 0;
+	next_pos = 0;
+	new_row = 0;
+	temp = first;
+	while (printed < in.file_quanity)
 	{
-		t = temp;
-		z = 0;
-		while (z != i)
+		if (cur_pos == next_pos)
 		{
-			z++;
+			tabs = (in.file_maxlen - ft_strlen(temp->name)) / 8;
+			if ((in.file_maxlen - ft_strlen(temp->name)) % 8 > 0)
+				tabs++;
+			ft_printf("%-s", temp->name);
+			while (tabs-- > 0)
+				write(1, "\t", 1);
+			printed++;
+			next_pos += in.file_rows;
+			if (next_pos >= in.file_quanity)
+			{
+				if (printed != in.file_quanity)
+					ft_printf("\n");
+				++new_row;
+				next_pos = new_row;
+				cur_pos = 0;
+				temp = first;
+			}
 		}
-		i++;
+		cur_pos++;
+		temp = temp->next;
 	}
+	(void)kl;
 	return (1);
 }
