@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/01 16:52:33 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/02 16:38:52 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,9 @@ t_fin			*ft_create_next_t_fin(t_keylist *kl, t_fin *temp, char *dir);
 int				ft_file_info(t_keylist *kl, struct stat buff, 
                                 t_fin *temp, int xattr);
 t_fileinfo		*ft_create_fileinfo(void);
+void		    ft_del_fileinfo(t_fileinfo *temp);
 t_maxsize		*ft_create_maxsize(void);
+void	    	ft_reset_maxsize(t_maxsize *new);
 /*
 ** ft_sort_list.c
 */
@@ -132,7 +134,7 @@ int             ft_ioctl(void);
 ** ft_printiing_col.c
 */
 int				ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l);
-void       		ft_printing_c_math(t_keylist *kl, t_fin *temp);
+void        	ft_fill_in(t_printcols *in, t_fin *first);
 int				ft_printing_c(t_keylist *kl, t_fin *temp);
 /*
 ** ft_check_date_time.c

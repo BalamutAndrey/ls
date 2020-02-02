@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/01 17:09:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/02 16:30:10 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ typedef struct				s_dirkeylist
 	char					*dir;
 	struct s_dirkeylist		*next;
 }							t_dirkeylist;
+
+typedef struct				s_printcols
+{
+	int						term_width;
+	int						file_quanity;
+	int						file_maxlen;
+	int						file_rows;
+	int						file_cols;
+}							t_printcols;
 
 typedef	struct				s_fileinfo
 {

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:10:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/31 15:25:26 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/02 17:01:43 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@ void	ft_printing(t_keylist *kl, t_fin *temp)
 
 	l = 0;
 	if ((kl->one != 1) && (kl->l != 1) && (kl->x != 1))
+	{
+		while ((temp) && (((temp->type == 2) && (kl->a == 0)) ||
+			((kl->a_big == 0) && (temp->type == 3))))
+			temp = temp->next;
 		ft_printing_c(kl, temp);
+	}
 	while (temp != NULL)
 	{
 		if ((temp->type < 2) || (kl->a > 0) ||

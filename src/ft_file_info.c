@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 19:00:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/31 18:13:28 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/02 15:12:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,21 @@ t_fileinfo	*ft_create_fileinfo(void)
 	return (new);
 }
 
+void		ft_del_fileinfo(t_fileinfo *temp)
+{
+	if (temp)
+	{
+		if (temp->chmod)
+			ft_strdel(&temp->chmod);
+		if (temp->login)
+			ft_strdel(&temp->login);
+		if (temp->group)
+			ft_strdel(&temp->group);
+		if (temp->time)
+			ft_strdel(&temp->time);
+	}
+}
+
 t_maxsize	*ft_create_maxsize(void)
 {
 	t_maxsize	*new;
@@ -67,6 +82,12 @@ t_maxsize	*ft_create_maxsize(void)
 	new = malloc(sizeof(t_maxsize));
 	if (!new)
 		return (NULL);
+	ft_reset_maxsize(new);
+	return (new);
+}
+
+void		ft_reset_maxsize(t_maxsize *new)
+{
 	new->type = 0;
 	new->login = 0;
 	new->group = 0;
@@ -76,5 +97,4 @@ t_maxsize	*ft_create_maxsize(void)
 	new->col = 0;
 	new->row = 0;
 	new->totalfile = 0;
-	return (new);
 }

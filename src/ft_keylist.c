@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:50:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/01 17:11:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/02 15:19:18 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,7 @@ void			remove_list(t_keylist *kl)
 		free(tempdir1);
 		tempdir1 = tempdir2;
 	}
+	if (kl->programm_name)
+		ft_strdel(&kl->programm_name);
 	free(kl);
 }

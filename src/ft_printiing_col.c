@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printiing_col.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:37:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/01 20:17:15 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/02 16:53:53 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-#include "temp.h"
 
 int		ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l)
 {
