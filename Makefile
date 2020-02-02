@@ -6,7 +6,7 @@
 #    By: eboris <eboris@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/18 12:46:02 by geliz             #+#    #+#              #
-#    Updated: 2020/01/27 14:03:28 by eboris           ###   ########.fr        #
+#    Updated: 2020/02/02 17:11:13 by eboris           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,13 @@ NAME = ft_ls
 FLAGS = -Wall -Wextra -Werror
 HEADERS = ./includes
 SRC_DIR = ./src
-SRC = ft_ls.c  $(SRC_DIR)/parsing.c $(SRC_DIR)/keylist.c \
-	  $(SRC_DIR)/open_and_read_dir.c $(SRC_DIR)/ft_sort_print_recurs_call.c $(SRC_DIR)/ft_create_and_del_t_fin.c \
-	  $(SRC_DIR)/ft_file_info.c $(SRC_DIR)/ft_check_access_rights.c $(SRC_DIR)/ft_sort_list.c
+SRC = ft_ls.c  $(SRC_DIR)/ft_parsing.c  $(SRC_DIR)/ft_parsing_key.c $(SRC_DIR)/ft_keylist.c \
+	  $(SRC_DIR)/ft_open_and_read_dir.c $(SRC_DIR)/ft_sort_print_recurs_call.c \
+	  $(SRC_DIR)/ft_create_and_del_t_fin.c  $(SRC_DIR)/ft_parsing_file_check.c \
+	  $(SRC_DIR)/ft_file_info.c $(SRC_DIR)/ft_check_access_rights.c $(SRC_DIR)/ft_sort_list.c \
+	  $(SRC_DIR)/ft_check_date_time.c  $(SRC_DIR)/ft_check_login_group_size.c  \
+	  $(SRC_DIR)/ft_print_error.c  $(SRC_DIR)/ft_printing.c  $(SRC_DIR)/ft_printing_col.c \
+	   $(SRC_DIR)/ft_read_stat.c  $(SRC_DIR)/ft_sort_list_reverse.c
 OBJ_DIR = ./obj
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 LIB_DIR = ./libft
