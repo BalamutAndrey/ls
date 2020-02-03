@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${fileDirname}/${fileBasenameNoExtension}",
 			//"args": ["../../../../../var/run"],
-			"args": ["test"],
+			"args": ["-Rx"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

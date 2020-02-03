@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:14:17 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/02 16:21:23 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/03 15:34:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_delete_lists(t_keylist *kl, t_fin *first)
 		first = temp;
 	}
 	if (kl->maxsize)
-		free(kl->maxsize);
-	//	ft_reset_maxsize(kl->maxsize);
+		ft_reset_maxsize(kl->maxsize);
+	//	free(kl->maxsize);
 }
 
 t_fin	*ft_create_next_t_fin(t_keylist *kl, t_fin *temp, char *dir)

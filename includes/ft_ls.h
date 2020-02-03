@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/02 16:38:52 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/03 17:39:56 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,17 @@ void			ft_sort_t_fin(t_keylist *kl, t_fin **list, int (*cmp)());
 void			ft_printing(t_keylist *kl, t_fin *temp);
 int				ft_printing_1(t_keylist *kl, t_fin *temp);
 int				ft_printing_l(t_keylist *kl, t_fin *temp);
+int				ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l);
 int             ft_ioctl(void);
 /*
 ** ft_printiing_col.c
 */
-int				ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l);
 void        	ft_fill_in(t_printcols *in, t_fin *first);
+void        	ft_fill_in_check(t_printcols *in);
 int				ft_printing_c(t_keylist *kl, t_fin *temp);
+t_fin           *ft_printing_c_while(t_fin *first, t_fin *temp,
+                                        t_printcols *in);
+t_printcols	    *ft_printing_col_in(void);
 /*
 ** ft_check_date_time.c
 */

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/02 16:30:10 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/03 17:29:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ typedef struct				s_printcols
 	int						file_maxlen;
 	int						file_rows;
 	int						file_cols;
+	int						printed;
+	int						cur_pos;
+	int						next_pos;
+	int						new_row;
+	int						tabs;
 }							t_printcols;
 
 typedef	struct				s_fileinfo
