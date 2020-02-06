@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:37:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/03 18:00:26 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/04 18:05:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,14 @@ void	ft_fill_in_check(t_printcols *in)
 	}
 	else
 	{
-		in->file_cols = in->term_width / in->file_maxlen;
-		in->file_rows = in->file_quanity / in->file_cols;
+		if (in->file_maxlen != 0)
+			in->file_cols = in->term_width / in->file_maxlen;
+		else
+			in->file_cols = 1;
+		if (in->file_cols)
+			in->file_rows = in->file_quanity / in->file_cols;
+		else
+			in->file_rows = 0;
 		if (in->file_quanity % in->file_cols > 0)
 			in->file_rows++;
 	}

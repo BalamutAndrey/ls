@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/01 17:14:16 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/06 14:03:59 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	ft_print_dir(t_keylist *kl, t_fin *first)
 	if (((kl->isfile > 0) && (kl->t_first == NULL)) ||
 		((kl->dirnbr > 1) && (kl->t_first == NULL)))
 		ft_printf("%s:\n", first->dir);
-	if ((kl->l == 1) && (kl->t_first == NULL))
-		ft_printf("total %i\n", kl->maxsize->total);
+	// if ((kl->l == 1) && (kl->t_first == NULL) && kl->maxsize->totalfile > 0)
+	// 	ft_printf("total %i\n", kl->maxsize->total);
 	ft_printing(kl, temp);
 }
 

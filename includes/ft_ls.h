@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/03 17:39:56 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/04 17:32:22 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,13 @@ void			ft_sort_t_fin(t_keylist *kl, t_fin **list, int (*cmp)());
 ** ft_printing.c
 */
 void			ft_printing(t_keylist *kl, t_fin *temp);
+int64_t     	ft_printing_while(t_keylist *kl, t_fin *temp, int64_t l);
 int				ft_printing_1(t_keylist *kl, t_fin *temp);
 int				ft_printing_l(t_keylist *kl, t_fin *temp);
 int				ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l);
+/*
+** ft_ioctl.c
+*/
 int             ft_ioctl(void);
 /*
 ** ft_printiing_col.c

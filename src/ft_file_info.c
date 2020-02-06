@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 19:00:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/02 15:12:44 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/06 14:09:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			ft_file_info(t_keylist *kl, struct stat buff,
 		kl->maxsize->total = kl->maxsize->total + buff.st_blocks;
 		temp->info->mtime = buff.st_mtime;
 		temp->info->atime = buff.st_atime;
+		kl->maxsize->totalfile += 1;
 	}
 	return (1);
 }

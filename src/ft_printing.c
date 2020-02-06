@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:10:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/03 17:30:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/06 14:03:56 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,37 @@ void	ft_printing(t_keylist *kl, t_fin *temp)
 			temp = temp->next;
 		ft_printing_c(kl, temp);
 	}
+	if ((kl->l == 1) && (kl->t_first == NULL) && kl->maxsize->totalfile > 0)
+		ft_printf("total %i\n", kl->maxsize->total);
 	while (temp != NULL)
 	{
-		if ((temp->type < 2) || (kl->a > 0) ||
-			((kl->a_big > 0) && (temp->type == 3)))
-		{
-			if (kl->l == 1)
-				ft_printing_l(kl, temp);
-			else if (kl->one == 1)
-				ft_printing_1(kl, temp);
-			else if (kl->x == 1)
-				ft_printing_x(kl, temp, &l);
-			l++;
-		}
+		l = ft_printing_while(kl, temp, l);
 		temp = temp->next;
 	}
 	if ((kl->one != 1) && (kl->l != 1))
-		printf("\n");
+		ft_printf("\n");
+}
+
+int64_t	ft_printing_while(t_keylist *kl, t_fin *temp, int64_t l)
+{
+	if ((temp->type < 2) || (kl->a > 0) ||
+		((kl->a_big > 0) && (temp->type == 3)))
+	{
+		if (kl->l == 1)
+			ft_printing_l(kl, temp);
+		else if (kl->one == 1)
+			ft_printing_1(kl, temp);
+		else if (kl->x == 1)
+			ft_printing_x(kl, temp, &l);
+		l++;
+	}
+	return (l);
 }
 
 int		ft_printing_1(t_keylist *kl, t_fin *temp)
 {
-	ft_printf("%-*s\n", kl->maxsize->name, temp->name);
+	ft_printf("%-s\n", temp->name);
+	(void)kl;
 	return (1);
 }
 
@@ -79,12 +88,4 @@ int		ft_printing_x(t_keylist *kl, t_fin *temp, int64_t *l)
 	}
 	ft_printf("%-*s", kl->maxsize->name, temp->name);
 	return (1);
-}
-
-int		ft_ioctl(void)
-{
-	struct winsize w;
-
-	ioctl(0, TIOCGWINSZ, &w);
-	return (w.ws_col);
 }

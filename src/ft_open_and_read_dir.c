@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/02 16:56:55 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/06 14:13:24 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ int		ft_read_dir_cycle_write(t_keylist *kl, t_fin *first,
 		first->name = ft_strdup(entry->d_name);
 	first->type = buff.st_mode & S_IFDIR ? 1 : 0;
 	ft_is_it_prev_cur_dir(kl, first);
+	if ((S_ISSOCK(buff.st_mode)) || (S_ISBLK(buff.st_mode)) ||
+			(S_ISCHR(buff.st_mode)))
+		first->type = 5;
 	if (ft_file_info(kl, buff, first, listxattr(t, NULL, 0, 0)) != 1)
 		return (-1);
 	ft_strdel(&t);
@@ -89,7 +92,8 @@ int		ft_open_and_read_dir(t_keylist *kl, char *cur)
 int		ft_dir_sort_print(t_keylist *kl, t_fin *first)
 {
 	ft_sort_list(kl, &first);
-	ft_print_dir(kl, first);
+	ft_print_dir(kl, first);	
+	ft_reset_maxsize(kl->maxsize);
 	if (kl->r_big == 1)
 		ft_recursive_call(kl, first);
 	ft_delete_lists(kl, first);
