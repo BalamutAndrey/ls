@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:10:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/06 14:03:56 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/07 15:16:47 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ void	ft_printing(t_keylist *kl, t_fin *temp)
 	l = 0;
 	if ((kl->one != 1) && (kl->l != 1) && (kl->x != 1))
 	{
-		while ((temp) && (((temp->type == 2) && (kl->a == 0)) ||
-			((kl->a_big == 0) && (temp->type == 3))))
-			temp = temp->next;
 		ft_printing_c(kl, temp);
 	}
 	if ((kl->l == 1) && (kl->t_first == NULL) && kl->maxsize->totalfile > 0)

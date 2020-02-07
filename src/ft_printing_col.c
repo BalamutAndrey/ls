@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printing_col.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:37:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/04 18:05:25 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/07 15:23:11 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_fill_in(t_printcols *in, t_fin *first)
+void	ft_fill_in(t_printcols *in, t_fin *first, t_keylist *kl)
 {
 	int		len;
 	t_fin	*temp;
 
+	if (!kl)
+		len = 0;
 	in->term_width = ft_ioctl();
 	in->file_quanity = 0;
 	in->file_maxlen = 0;
@@ -63,7 +65,7 @@ int		ft_printing_c(t_keylist *kl, t_fin *first)
 
 	if ((in = ft_printing_col_in()) == NULL)
 		return (0);
-	ft_fill_in(in, first);
+	ft_fill_in(in, first, kl);
 	temp = first;
 	while (in->printed < in->file_quanity)
 	{

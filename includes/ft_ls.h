@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/07 13:53:04 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/07 15:22:37 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int             ft_ioctl(void);
 /*
 ** ft_printiing_col.c
 */
-void        	ft_fill_in(t_printcols *in, t_fin *first);
+void        	ft_fill_in(t_printcols *in, t_fin *first, t_keylist *kl);
 void        	ft_fill_in_check(t_printcols *in);
 int				ft_printing_c(t_keylist *kl, t_fin *temp);
 t_fin           *ft_printing_c_while(t_fin *first, t_fin *temp,
