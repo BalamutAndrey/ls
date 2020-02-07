@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/07 14:35:10 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/07 14:47:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,14 @@ int			ft_ls_key(t_keylist *kl, char *argv)
 	int	i;
 
 	i = 1;
+	if ((argv[1] == 45) && (argv[2] == '\0'))
+		return (45);
 	while (argv[i] != '\0')
 	{
 		if (ft_ls_key_if_1(kl, argv[i]) == 1)
 			i++;
 		else
-		{
-			if (argv[i] == 45)
-				return (45);
-			else
-				return (i);
-		}
+			return (i);
 	}
 	return (255);
 }
