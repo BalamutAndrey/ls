@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_and_del_t_fin.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:14:17 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/03 15:34:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/07 17:09:23 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_delete_lists(t_keylist *kl, t_fin *first)
 		free(first);
 		first = temp;
 	}
-	if (kl->maxsize)
+	if (kl != NULL && kl->maxsize)
 		ft_reset_maxsize(kl->maxsize);
 	//	free(kl->maxsize);
 }

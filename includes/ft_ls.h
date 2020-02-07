@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/07 15:22:37 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/07 17:19:30 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int             ft_ioctl(void);
 /*
 ** ft_printiing_col.c
 */
-void        	ft_fill_in(t_printcols *in, t_fin *first, t_keylist *kl);
+void        	ft_fill_in(t_printcols *in, t_fin *first);
 void        	ft_fill_in_check(t_printcols *in);
 int				ft_printing_c(t_keylist *kl, t_fin *temp);
 t_fin           *ft_printing_c_while(t_fin *first, t_fin *temp,
@@ -155,4 +155,8 @@ char	        *ft_time_pars(char *src, int t);
 */
 void	        ft_print_error(t_keylist *kl, char	*cur);
 void	        ft_print_illegal_option(char *filename, char c);
+/*
+**  ft_print_c_check_a_a_big.c
+*/
+t_fin	        *ft_check_keys_a_a_big(t_fin *first, t_keylist *kl);
 #endif

@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:10:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/07 15:16:47 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/07 17:13:24 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 void	ft_printing(t_keylist *kl, t_fin *temp)
 {
 	int64_t	l;
+	t_fin	*alt_f;
 
 	l = 0;
 	if ((kl->one != 1) && (kl->l != 1) && (kl->x != 1))
 	{
-		ft_printing_c(kl, temp);
+		alt_f = ft_check_keys_a_a_big(temp, kl);
+		alt_f == NULL ? ft_printing_c(kl, temp) : ft_printing_c(kl, alt_f);
+		if (alt_f)
+			ft_delete_lists(NULL, alt_f);
 	}
 	if ((kl->l == 1) && (kl->t_first == NULL) && kl->maxsize->totalfile > 0)
 		ft_printf("total %i\n", kl->maxsize->total);
