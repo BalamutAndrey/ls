@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:37:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/07 17:20:15 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/07 17:34:46 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_fin	*ft_printing_c_while(t_fin *first, t_fin *temp, t_printcols *in)
 		if ((in->file_maxlen - ft_strlen(temp->name)) % 8 > 0)
 			in->tabs += 1;
 		ft_printf("%-s", temp->name);
-		in->tabs += 1;
+		in->tabs = in->file_cols == 1 ? 0 : in->tabs + 1;
 		while ((in->tabs -= 1) > 0)
 			write(1, "\t", 1);
 		in->printed++;
