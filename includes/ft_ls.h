@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/04 17:32:22 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/07 13:53:04 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void			remove_list(t_keylist *kl);
 ** ft_parsing.c
 */
 t_keylist		*ft_ls_parsing_key(int argc, char **argv);
+t_keylist	    *ft_parsing_dir(t_keylist *kl, int argc, char **argv, int i);
 void			ft_ls_writedir(t_keylist *kl, char *argv);
 int				ft_ls_key(t_keylist *kl, char *argv);
 /*

@@ -11,7 +11,7 @@
 			"program": "${fileDirname}/${fileBasenameNoExtension}",
 			//"args": ["../../../../../var/run"],
 			// "args": ["-R", "../../../../../"],
-			"args": ["-lR", "test4"],
+			"args": ["-l", "--", "--", "test7"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

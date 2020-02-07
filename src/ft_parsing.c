@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/01 17:18:16 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/07 14:35:10 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,29 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 	int			i;
 	int			c;
 
-	i = 0;
+	i = 1;
+	c = 0;
 	if (!(kl = create_keylist()))
 		return (NULL);
 	kl->programm_name = ft_strdup(argv[0]);
-	while ((argc > 1) && (++i < argc) && (argv[i][0] == '-'))
+	while ((argc > 1) && (i < argc) && (argv[i][0] == '-') && (c != '-'))
+	{
 		if ((c = ft_ls_key(kl, argv[i])) != 255)
 		{
-			ft_print_illegal_option(argv[0], argv[i][c]);
-			return (0);
+			if (c != '-')
+			{
+				ft_print_illegal_option(argv[0], argv[i][c]);
+				return (0);
+			}
 		}
+		i++;
+	}
 	i--;
+	return (ft_parsing_dir(kl, argc, argv, i));
+}
+
+t_keylist	*ft_parsing_dir(t_keylist *kl, int argc, char **argv, int i)
+{
 	while ((argc > 1) && ++i < argc)
 		ft_ls_writedir(kl, argv[i]);
 	if ((kl->dirnbr == 0) && (kl->t_first == NULL))
@@ -81,7 +93,12 @@ int			ft_ls_key(t_keylist *kl, char *argv)
 		if (ft_ls_key_if_1(kl, argv[i]) == 1)
 			i++;
 		else
-			return (i);
+		{
+			if (argv[i] == 45)
+				return (45);
+			else
+				return (i);
+		}
 	}
 	return (255);
 }

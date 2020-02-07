@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_key.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 13:09:04 by eboris            #+#    #+#             */
-/*   Updated: 2020/01/31 18:45:23 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/07 14:32:56 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int			ft_ls_key_if_1(t_keylist *kl, char k)
 {
-	if (k == 'R')
+	if (k == '-')
+		return (k);
+	else if (k == 'R')
 		kl->r_big = 1;
 	else if (k == 'r')
 		kl->r = 1;
