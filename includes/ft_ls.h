@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/09 14:37:57 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/09 17:15:02 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ t_printcols	    *ft_printing_col_in(void);
 ** ft_check_date_time.c
 */
 int	            ft_time_six_months(int t, char *src, char *str);
+int				ft_time_10000(char *src, char *str);
 char	        *ft_time_pars(char *src, int t);
 /*
 ** ft_print_error.c
