@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/07 17:47:44 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/09 15:36:16 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 				ft_print_illegal_option(argv[0], argv[i][c]);
 				return (0);
 			}
+			else if ((c == '-') && (argv[i][1] == '\0'))
+				i--;
 		}
 		i++;
 	}
@@ -89,7 +91,8 @@ int			ft_ls_key(t_keylist *kl, char *argv)
 	int	i;
 
 	i = 1;
-	if ((argv[1] == 45) && (argv[2] == '\0'))
+	if (((argv[0] == 45) && (argv[1] == '\0')) ||
+		((argv[1] == 45) && (argv[2] == '\0')))
 		return (45);
 	while (argv[i] != '\0')
 	{
