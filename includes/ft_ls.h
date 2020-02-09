@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/07 17:19:30 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/09 14:37:57 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,10 @@ void			ft_print_dir(t_keylist *kl, t_fin *firsts);
 void			ft_split_t_fin(t_fin *first, t_fin **a, t_fin **b);
 t_fin			*ft_merge(t_fin *a, t_fin *b, int (*cmp)());
 void			ft_sort_t_fin(t_keylist *kl, t_fin **list, int (*cmp)());
+/*
+** ft_sort_arg_dir.c
+*/
+void			ft_sort_arg_dirs(t_keylist *kl);
 /*
 ** ft_printing.c
 */
