@@ -12,7 +12,7 @@
 			//"args": ["../../../../../var/run"],
 			// "args": ["-R", "../../../../../"],
 			// "args": ["-l", "--", "--", "test7"],
-			"args": ["-l", "../42FileChecker/maintest/ft_ls/t_dir"],
+			"args": ["-l", "../../../../../etc"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

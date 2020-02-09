@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open_and_read_dir.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/07 15:21:42 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/09 18:51:04 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_is_it_prev_cur_dir(t_keylist *kl, t_fin *temp)
 int		ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first)
 {
 	struct dirent	*entry;
+	struct stat		buff;
 	char			*t;
 
 	while ((entry = readdir(dir)) != NULL)
@@ -36,7 +37,18 @@ int		ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first)
 		if (first->name)
 			first = ft_create_next_t_fin(kl, first, first->dir);
 		t = ft_strjoin_arg("%s %s %s", first->dir, "/", entry->d_name);
-		ft_read_dir_cycle_write(kl, first, entry, t);
+		ft_check_file_link(first, first->dir);
+		if ((first->linkto != NULL) && (kl->l > 0) && (kl->l_big < 1))
+		{
+			first->name = ft_strdup(first->dir);	
+			ft_read_dir_cycle_lstat(first, &buff, first->name);
+			if (ft_file_info(kl, buff, first, listxattr(first->name, NULL, 0, 0)) != 1)
+				return (-1);	
+			//ft_dir_sort_print(kl, first);
+			return (0);
+		}
+		else
+			ft_read_dir_cycle_write(kl, first, entry, t);
 	}
 	return (0);
 }
@@ -56,7 +68,8 @@ int		ft_read_dir_cycle_write(t_keylist *kl, t_fin *first,
 		return (-1);
 	if ((entry != NULL) && (entry->d_namlen > 0))
 		first->name = ft_strdup(entry->d_name);
-	first->type = buff.st_mode & S_IFDIR ? 1 : 0;
+	if (first->type < 1)
+		first->type = buff.st_mode & S_IFDIR ? 1 : 0;
 	ft_is_it_prev_cur_dir(kl, first);
 	if ((S_ISSOCK(buff.st_mode)) || (S_ISBLK(buff.st_mode)) ||
 			(S_ISCHR(buff.st_mode)))

@@ -6,13 +6,13 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 18:04:48 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/09 17:21:57 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/09 17:26:30 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int	ft_time_six_months(int t, char *src, char *str)
+int		ft_time_six_months(int t, char *src, char *str)
 {
 	time_t	c_time;
 
