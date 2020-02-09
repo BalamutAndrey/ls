@@ -1,0 +1,58 @@
+4,5c4,5
+< lrwxr-xr-x   1 root   wheel        74 Aug  4  2018 2to3-2.7 -> ../../System/Library/Frameworks/Python.framework/Versions/2.7/bin/2to3-2.7
+< lrwxr-xr-x   1 root   wheel        73 Aug  4  2018 2to32.6 -> ../../System/Library/Frameworks/Python.framework/Versions/2.6/bin/2to32.6
+---
+> lrwxr-xr-x   1 root   wheel        74 Aug  4  2018 2to3-2.7 -> ../../System/Library/Frameworks/Python.framework/Versions/2.7/bin/2to3-2.7n
+> lrwxr-xr-x   1 root   wheel        73 Aug  4  2018 2to32.6 -> ../../System/Library/Frameworks/Python.framework/Versions/2.6/bin/2to32.6CPX
+49c49
+< -r-sr-xr-x   1 root   wheel     83584 Jul 26  2019 at
+---
+> -r-xr-xr-x   1 root   wheel     83584 Jul 26  2019 at
+51,52c51,52
+< -r-sr-xr-x   1 root   wheel     83584 Jul 26  2019 atq
+< -r-sr-xr-x   1 root   wheel     83584 Jul 26  2019 atrm
+---
+> -r-xr-xr-x   1 root   wheel     83584 Jul 26  2019 atq
+> -r-xr-xr-x   1 root   wheel     83584 Jul 26  2019 atrm
+66c66
+< -r-sr-xr-x   1 root   wheel     83584 Jul 26  2019 batch
+---
+> -r-xr-xr-x   1 root   wheel     83584 Jul 26  2019 batch
+159c159
+< -rwsr-xr-x   1 root   wheel     39152 Jul 15  2017 crontab
+---
+> -rwxr-xr-x   1 root   wheel     39152 Jul 15  2017 crontab
+174c174
+< lrwxr-xr-x   1 root   wheel        59 Aug  4  2018 cvaffinity -> /System/Library/Filesystems/acfs.fs/Contents/bin/cvaffinity
+---
+> lrwxr-xr-x   1 root   wheel        59 Aug  4  2018 cvaffinity -> /System/Library/Filesystems/acfs.fs/Contents/bin/cvaffinityÿÿÿÿÿ
+487c487
+< -r-sr-xr-x   1 root   wheel     76208 Jul 26  2019 login
+---
+> -r-xr-xr-x   1 root   wheel     76208 Jul 26  2019 login
+581c581
+< -r-sr-xr-x   1 root   wheel     52480 Jul 26  2019 newgrp
+---
+> -r-xr-xr-x   1 root   wheel     52480 Jul 26  2019 newgrp
+758c758
+< -r-sr-xr-x   1 root   wheel     23552 Jul 15  2017 quota
+---
+> -r-xr-xr-x   1 root   wheel     23552 Jul 15  2017 quota
+883,884c883,884
+< -rwsr-xr-x   1 root   wheel     25424 Jul 15  2017 su
+< -r-s--x--x   1 root   wheel    369648 Jul 15  2017 sudo
+---
+> -rwxr-xr-x   1 root   wheel     25424 Jul 15  2017 su
+> -r-x--x--x   1 root   wheel    369648 Jul 15  2017 sudo
+943c943
+< -r-sr-xr-x   1 root   wheel     88272 Jul 15  2017 top
+---
+> -r-xr-xr-x   1 root   wheel     88272 Jul 15  2017 top
+1002c1002
+< -r-xr-sr-x   1 root   tty       24768 Jul 15  2017 wall
+---
+> -r-xr-xr-x   1 root   tty       24768 Jul 15  2017 wall
+1017c1017
+< -r-xr-sr-x   1 root   tty       23872 Jul 15  2017 write
+---
+> -r-xr-xr-x   1 root   tty       23872 Jul 15  2017 write

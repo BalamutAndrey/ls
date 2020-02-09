@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 13:29:49 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/01 16:58:24 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/09 16:29:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,17 @@ void	ft_check_file_link(t_fin *first, char *fn)
 	err = lstat(fn, &buff);
 	if (S_ISLNK(buff.st_mode))
 	{
-		linkto = malloc(257 * sizeof(char));
-		linkto[256] = '\0';
+//		linkto = malloc(257 * sizeof(char));
+//		linkto[256] = '\0';
+		linkto = ft_strnew(256);
 		if (err == 0)
 		{
 			err = readlink(fn, linkto, 255);
 			if (err > 0)
+			{
+				linkto[err] = '\0';
 				first->linkto = ft_strdup(linkto);
+			}
 		}
 	}
 }

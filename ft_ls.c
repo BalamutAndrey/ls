@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:21:42 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/09 14:40:48 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/09 16:16:37 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (!(kl = ft_ls_parsing_key(argc, argv)))
 	{
-		return (0);
+		return (1);
 	}
 	i = 0;
 	kl->current = kl->first;
