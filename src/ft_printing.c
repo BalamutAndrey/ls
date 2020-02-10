@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:10:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/07 17:13:24 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/10 16:12:41 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ void	ft_printing(t_keylist *kl, t_fin *temp)
 
 int64_t	ft_printing_while(t_keylist *kl, t_fin *temp, int64_t l)
 {
-	if ((temp->type < 2) || (kl->a > 0) ||
-		((kl->a_big > 0) && (temp->type == 3)))
+	if ((temp->type < 2) || (temp->type == 5) || (kl->a > 0) ||
+		((kl->a_big > 0) && (temp->type == 3)) ||
+		((kl->a_big > 0) && (temp->type == 6)))
 	{
 		if (kl->l == 1)
 			ft_printing_l(kl, temp);

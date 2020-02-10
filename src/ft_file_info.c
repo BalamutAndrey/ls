@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 19:00:20 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/06 14:09:12 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/10 16:07:52 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ft_file_info(t_keylist *kl, struct stat buff,
 		temp->info->time = ft_time_pars(ctime(&buff.st_atime), buff.st_atime);
 	else
 		temp->info->time = ft_time_pars(ctime(&buff.st_mtime), buff.st_mtime);
-	if ((temp->type < 2) || (kl->a > 0) ||
+	if ((temp->type < 2) || (temp->type > 3) || (kl->a > 0) ||
 		((kl->a_big > 0) && (temp->type == 3)))
 	{
 		temp->info->chmod = ft_check_access_rights(buff, xattr);

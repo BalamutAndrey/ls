@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/09 15:36:16 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/10 17:56:58 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,36 @@ t_keylist	*ft_parsing_dir(t_keylist *kl, int argc, char **argv, int i)
 
 void		ft_ls_writedir(t_keylist *kl, char *argv)
 {
-	DIR		*dir;
+	DIR				*dir;
+	struct stat		buff;
 
-	dir = opendir(argv);
-	if ((dir == NULL) && (errno == 20))
+	lstat(argv, &buff);
+	if ((S_ISDIR(buff.st_mode)) || ((S_ISLNK(buff.st_mode)) && ((kl->l != 1) || (kl->l_big == 1))))
+	{
+		dir = opendir(argv);
+		if (dir != NULL)
+		{
+			if (kl->dirnbr == 0)
+			{
+				kl->first->dir = ft_strdup(argv);
+				kl->dirnbr = 1;
+			}
+			else
+			{
+				kl->end = add_dkl(kl);
+				kl->end->dir = ft_strdup(argv);
+			}
+		}
+	}
+	else if ((S_ISBLK(buff.st_mode)) || (S_ISCHR(buff.st_mode)) || (S_ISFIFO(buff.st_mode))
+			|| (S_ISREG(buff.st_mode)) || (S_ISLNK(buff.st_mode)) || (S_ISSOCK(buff.st_mode)))
 	{
 		ft_create_tempdir(kl, argv);
 		kl->isfile += 1;
 	}
 	else
 	{
+		dir = opendir(argv);
 		if (kl->dirnbr == 0)
 		{
 			kl->first->dir = ft_strdup(argv);
@@ -83,6 +103,7 @@ void		ft_ls_writedir(t_keylist *kl, char *argv)
 			kl->end = add_dkl(kl);
 			kl->end->dir = ft_strdup(argv);
 		}
+
 	}
 }
 
