@@ -6,13 +6,13 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:31:16 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/29 16:48:43 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/13 16:51:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void					ft_is_it_dir_file_link(char *str, struct stat buff)
+void	ft_is_it_dir_file_link(char *str, struct stat buff)
 {
 	if (S_ISREG(buff.st_mode))
 		str[0] = '-';
@@ -30,7 +30,7 @@ void					ft_is_it_dir_file_link(char *str, struct stat buff)
 		str[0] = 's';
 }
 
-char					*ft_check_access_rights(struct stat buff, int xattr)
+char	*ft_check_access_rights(struct stat buff, int xattr)
 {
 	char	*str;
 
@@ -46,6 +46,32 @@ char					*ft_check_access_rights(struct stat buff, int xattr)
 	str[7] = buff.st_mode & S_IROTH ? 'r' : '-';
 	str[8] = buff.st_mode & S_IWOTH ? 'w' : '-';
 	str[9] = buff.st_mode & S_IXOTH ? 'x' : '-';
+	return (ft_check_access_ext_rights(buff, xattr, str));
+}
+
+char	*ft_check_access_ext_rights(struct stat buff, int xattr, char *str)
+{
+	if (buff.st_mode & S_ISUID)
+	{
+		if (str[3] == 'x')
+			str[3] = 's';
+		else
+			str[3] = 'S';
+	}
+	if (buff.st_mode & S_ISGID)
+	{
+		if (str[6] == 'x')
+			str[6] = 's';
+		else
+			str[6] = 'S';
+	}
+	if (buff.st_mode & S_ISVTX)
+	{
+		if (str[9] == 'x')
+			str[9] = 't';
+		else
+			str[9] = 'T';
+	}
 	str[10] = xattr > 0 ? '@' : ' ';
 	return (str);
 }

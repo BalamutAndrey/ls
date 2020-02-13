@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/13 14:58:38 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/13 16:51:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int		        ft_time_mod_rev_sort(t_fin *a, t_fin *b);
 */
 void			ft_is_it_dir_file_link(char *str, struct stat buff);
 char			*ft_check_access_rights(struct stat buff, int xattr);
+char			*ft_check_access_ext_rights(struct stat buff, int xattr, char *str);
 int				ft_check_nlink(t_maxsize *maxsize, struct stat buff);
 /*
 ** t_check_login_group_size.c
