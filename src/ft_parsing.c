@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/10 17:56:58 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/13 15:04:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,17 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 
 t_keylist	*ft_parsing_dir(t_keylist *kl, int argc, char **argv, int i)
 {
+	int	a;
+
+	a = 1;
 	while ((argc > 1) && ++i < argc)
-		ft_ls_writedir(kl, argv[i]);
-	if ((kl->dirnbr == 0) && (kl->t_first == NULL))
+		a = ft_ls_writedir(kl, argv[i]);
+	if ((kl->dirnbr == 0) && (kl->t_first == NULL) && (a != 0))
 	{
 		kl->first->dir = ft_strdup(".");
 		kl->dirnbr = 1;
 	}
-	if (kl->t_first != NULL)
+	if ((kl->t_first != NULL))
 	{
 		ft_sort_arg_dirs(kl);
 		ft_dir_sort_print(kl, kl->t_first);
@@ -61,38 +64,41 @@ t_keylist	*ft_parsing_dir(t_keylist *kl, int argc, char **argv, int i)
 	return (kl);
 }
 
-void		ft_ls_writedir(t_keylist *kl, char *argv)
+int		ft_ls_writedir(t_keylist *kl, char *argv)
 {
 	DIR				*dir;
 	struct stat		buff;
 
+	dir = NULL;
 	lstat(argv, &buff);
-	if ((S_ISDIR(buff.st_mode)) || ((S_ISLNK(buff.st_mode)) && ((kl->l != 1) || (kl->l_big == 1))))
+	if ((S_ISDIR(buff.st_mode)) || ((S_ISLNK(buff.st_mode)) &&
+		((kl->l != 1) || (kl->l_big == 1))))
 	{
-		dir = opendir(argv);
-		if (dir != NULL)
-		{
-			if (kl->dirnbr == 0)
-			{
-				kl->first->dir = ft_strdup(argv);
-				kl->dirnbr = 1;
-			}
-			else
-			{
-				kl->end = add_dkl(kl);
-				kl->end->dir = ft_strdup(argv);
-			}
-		}
+		dir = ft_ls_writedir_open(kl, argv);
 	}
-	else if ((S_ISBLK(buff.st_mode)) || (S_ISCHR(buff.st_mode)) || (S_ISFIFO(buff.st_mode))
-			|| (S_ISREG(buff.st_mode)) || (S_ISLNK(buff.st_mode)) || (S_ISSOCK(buff.st_mode)))
+	else if ((S_ISBLK(buff.st_mode)) || (S_ISCHR(buff.st_mode)) ||
+				(S_ISFIFO(buff.st_mode)) || (S_ISREG(buff.st_mode)) ||
+				(S_ISLNK(buff.st_mode)) || (S_ISSOCK(buff.st_mode)))
 	{
 		ft_create_tempdir(kl, argv);
 		kl->isfile += 1;
 	}
 	else
 	{
-		dir = opendir(argv);
+		dir = ft_ls_writedir_open(kl, argv);
+	}
+	if (dir == NULL)
+		return (0);
+	return (1);
+}
+
+DIR		*ft_ls_writedir_open(t_keylist *kl, char *argv)
+{
+	DIR				*dir;
+
+	dir = opendir(argv);
+	if (dir != NULL)
+	{
 		if (kl->dirnbr == 0)
 		{
 			kl->first->dir = ft_strdup(argv);
@@ -103,8 +109,12 @@ void		ft_ls_writedir(t_keylist *kl, char *argv)
 			kl->end = add_dkl(kl);
 			kl->end->dir = ft_strdup(argv);
 		}
-
 	}
+	else
+	{
+		ft_print_error(kl, argv);
+	}
+	return (dir);
 }
 
 int			ft_ls_key(t_keylist *kl, char *argv)
