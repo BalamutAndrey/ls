@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/13 18:03:14 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/13 18:41:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,59 +63,6 @@ t_keylist	*ft_parsing_dir(t_keylist *kl, int argc, char **argv, int i)
 		kl->t_first = NULL;
 	}
 	return (kl);
-}
-
-int		ft_ls_writedir(t_keylist *kl, char *argv)
-{
-	DIR				*dir;
-	struct stat		buff;
-
-	dir = NULL;
-	lstat(argv, &buff);
-	if ((S_ISDIR(buff.st_mode)) || ((S_ISLNK(buff.st_mode)) &&
-		((kl->l != 1) || (kl->l_big == 1))))
-	{
-		dir = ft_ls_writedir_open(kl, argv);
-	}
-	else if ((S_ISBLK(buff.st_mode)) || (S_ISCHR(buff.st_mode)) ||
-				(S_ISFIFO(buff.st_mode)) || (S_ISREG(buff.st_mode)) ||
-				(S_ISLNK(buff.st_mode)) || (S_ISSOCK(buff.st_mode)))
-	{
-		ft_create_tempdir(kl, argv);
-		kl->isfile += 1;
-	}
-	else
-	{
-		dir = ft_ls_writedir_open(kl, argv);
-	}
-	if (dir == NULL)
-		return (0);
-	return (1);
-}
-
-DIR		*ft_ls_writedir_open(t_keylist *kl, char *argv)
-{
-	DIR				*dir;
-
-	dir = opendir(argv);
-	if (dir != NULL)
-	{
-		if (kl->dirnbr == 0)
-		{
-			kl->first->dir = ft_strdup(argv);
-			kl->dirnbr = 1;
-		}
-		else
-		{
-			kl->end = add_dkl(kl);
-			kl->end->dir = ft_strdup(argv);
-		}
-	}
-	else
-	{
-		ft_print_error(kl, argv);
-	}
-	return (dir);
 }
 
 int			ft_ls_key(t_keylist *kl, char *argv)

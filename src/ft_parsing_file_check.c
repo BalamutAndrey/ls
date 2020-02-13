@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 13:29:49 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/09 17:50:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/13 19:13:37 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		ft_create_tempdir(t_keylist *kl, char *filename)
 	if (kl->l_big == 0)
 		ft_check_file_link(temp, fn);
 	ft_read_dir_cycle_write(kl, temp, NULL, fn);
+	kl->isfile += 1;
 	return (0);
 }
 
