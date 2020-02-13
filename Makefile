@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eboris <eboris@student.42.fr>              +#+  +:+       +#+         #
+#    By: geliz <geliz@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/18 12:46:02 by geliz             #+#    #+#              #
-#    Updated: 2020/02/09 14:40:45 by eboris           ###   ########.fr        #
+#    Updated: 2020/02/13 18:10:33 by geliz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC = ft_ls.c  $(SRC_DIR)/ft_parsing.c  $(SRC_DIR)/ft_parsing_key.c $(SRC_DIR)/f
 	  $(SRC_DIR)/ft_check_date_time.c  $(SRC_DIR)/ft_check_login_group_size.c  \
 	  $(SRC_DIR)/ft_print_error.c  $(SRC_DIR)/ft_printing.c  $(SRC_DIR)/ft_printing_col.c \
 	  $(SRC_DIR)/ft_read_stat.c  $(SRC_DIR)/ft_sort_list_reverse.c \
-	  $(SRC_DIR)/ft_ioctl.c $(SRC_DIR)/ft_print_c_check_a_a_big.c  $(SRC_DIR)/ft_sort_arg_dir.c
+	  $(SRC_DIR)/ft_ioctl.c $(SRC_DIR)/ft_print_c_check_a_a_big.c  $(SRC_DIR)/ft_sort_arg_dir.c \
+	  $(SRC_DIR)/ft_sort_dirkeylist.c
 OBJ_DIR = ./obj
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 LIB_DIR = ./libft

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/13 16:51:27 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/13 18:09:17 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,6 @@ void			ft_split_t_fin(t_fin *first, t_fin **a, t_fin **b);
 t_fin			*ft_merge(t_fin *a, t_fin *b, int (*cmp)());
 void			ft_sort_t_fin(t_keylist *kl, t_fin **list, int (*cmp)());
 /*
-** ft_sort_arg_dir.c
-*/
-void			ft_sort_arg_dirs(t_keylist *kl);
-/*
 ** ft_printing.c
 */
 void			ft_printing(t_keylist *kl, t_fin *temp);
@@ -166,4 +162,19 @@ void	        ft_print_illegal_option(char *filename, char c);
 **  ft_print_c_check_a_a_big.c
 */
 t_fin	        *ft_check_keys_a_a_big(t_fin *first, t_keylist *kl);
+/*
+** ft_sort_arg_dir.c
+*/
+void			ft_sort_arg_dirs(t_keylist *kl);
+int             ft_dirkeylist_alphabet_sort(t_dirkeylist *a, t_dirkeylist *b);
+int				ft_dirkeylist_alphabet_rev_sort(t_dirkeylist *a, t_dirkeylist *b);
+/*
+** ft_sort_dirkeylist.c
+*/
+void			ft_sort_dirkeylist(t_dirkeylist **list, int (*cmp)());
+t_dirkeylist	*ft_merge_dirkeylist(t_dirkeylist *a, t_dirkeylist *b,
+					int (*cmp)());
+void			ft_split_t_dirkeylist(t_dirkeylist *first, t_dirkeylist **a,
+					t_dirkeylist **b);
+
 #endif

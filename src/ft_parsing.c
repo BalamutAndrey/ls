@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/13 15:04:44 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/13 18:03:14 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ t_keylist	*ft_parsing_dir(t_keylist *kl, int argc, char **argv, int i)
 		kl->first->dir = ft_strdup(".");
 		kl->dirnbr = 1;
 	}
+	if (kl->first != NULL)
+		ft_sort_arg_dirs(kl);
 	if ((kl->t_first != NULL))
 	{
-		ft_sort_arg_dirs(kl);
 		ft_dir_sort_print(kl, kl->t_first);
 		if (kl->dirnbr > 0)
 			ft_printf("\n");
