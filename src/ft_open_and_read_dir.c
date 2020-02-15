@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/15 19:01:52 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 19:13:43 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int		ft_open_and_read_dir(t_keylist *kl, char *cur)
 	if (dir == NULL)
 	{
 		ft_print_error(kl, cur);
+		ft_delete_lists(kl, first);
 		return (0);
 	}
 	if (ft_read_dir_cycle(kl, dir, first) == -1)

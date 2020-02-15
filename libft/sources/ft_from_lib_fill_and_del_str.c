@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_from_lib_fill_and_del_str.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 19:04:27 by geliz             #+#    #+#             */
-/*   Updated: 2020/01/11 16:44:43 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/15 19:11:04 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_strcat(char *s1, const char *s2)
 
 void	ft_strdel(char **as)
 {
-	if (*as != NULL)
+	if ((as) && (*as))
 	{
 		ft_memset(*as, 0, ft_strlen(*as));
 		free(*as);

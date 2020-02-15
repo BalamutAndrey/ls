@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/15 14:19:31 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 19:18:56 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_recursive_call(t_keylist *kl, t_fin *first)
 			first->dir = ft_strjoin_arg("%f %s %s", first->dir, "/",
 				first->name);
 			ft_printf("\n");
-			ft_printf("%s:\n", first->dir);
+//			ft_printf("%s:\n", first->dir);
 			ft_open_and_read_dir(kl, first->dir);
 		}
 		first = first->next;
