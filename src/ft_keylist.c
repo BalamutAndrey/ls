@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:50:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/15 14:10:40 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 19:04:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,8 @@ void			remove_list(t_keylist *kl)
 	}
 	if (kl->programm_name)
 		ft_strdel(&kl->programm_name);
+	if (kl->maxsize)
+		free(kl->maxsize);
+	kl->maxsize = NULL;
 	free(kl);
 }

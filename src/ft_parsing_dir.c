@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:40:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/13 19:14:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 18:58:01 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int		ft_ls_writedir(t_keylist *kl, char *argv)
 		dir = ft_ls_writedir_open(kl, argv);
 	if (dir == NULL)
 		return (0);
+	else
+		closedir(dir);
 	return (1);
 }
 
