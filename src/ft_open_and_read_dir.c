@@ -6,13 +6,13 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/10 17:27:41 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 14:16:35 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_is_it_prev_cur_dir(t_keylist *kl, t_fin *temp)
+void	ft_is_it_prev_cur_dir(t_keylist *kl, t_fin *temp, struct stat buff)
 {
 	if (ft_strlen(temp->name) == 1 && temp->name[0] == '.')
 		temp->type = 2;
@@ -22,14 +22,21 @@ void	ft_is_it_prev_cur_dir(t_keylist *kl, t_fin *temp)
 		temp->type = 2;
 	}
 	if ((kl->a != 1) && (temp->type != 2) && (temp->name[0] == '.'))
-		temp->type = 3; /*hidden files*/
-	(void)kl; //not used
+		temp->type = 3;
+	if ((S_ISSOCK(buff.st_mode)) || (S_ISBLK(buff.st_mode)) ||
+			(S_ISCHR(buff.st_mode)))
+	{
+		if (temp->type == 3)
+			temp->type = 6;
+		else
+			temp->type = 5;
+	}
+	(void)kl;
 }
 
 int		ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first)
 {
 	struct dirent	*entry;
-//	struct stat		buff;
 	char			*t;
 
 	while ((entry = readdir(dir)) != NULL)
@@ -37,18 +44,6 @@ int		ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first)
 		if (first->name)
 			first = ft_create_next_t_fin(kl, first, first->dir);
 		t = ft_strjoin_arg("%s %s %s", first->dir, "/", entry->d_name);
-//		ft_check_file_link(first, first->dir);
-//		if ((first->linkto != NULL) && (kl->l > 0) && (kl->l_big < 1))
-//		{
-//			first->name = ft_strdup(first->dir);	
-//			ft_read_dir_cycle_lstat(first, &buff, first->name);
-//			if (ft_file_info(kl, buff, first, listxattr(first->name, NULL, 0, XATTR_NOFOLLOW)) != 1)
-//				return (-1);
-//			first->type = 7;
-//			//ft_dir_sort_print(kl, first);
-//			return (0);
-//		}
-//		else
 		ft_read_dir_cycle_write(kl, first, entry, t);
 	}
 	return (0);
@@ -71,16 +66,9 @@ int		ft_read_dir_cycle_write(t_keylist *kl, t_fin *first,
 		first->name = ft_strdup(entry->d_name);
 	if (first->type < 1)
 		first->type = buff.st_mode & S_IFDIR ? 1 : 0;
-	ft_is_it_prev_cur_dir(kl, first);
-	if ((S_ISSOCK(buff.st_mode)) || (S_ISBLK(buff.st_mode)) ||
-			(S_ISCHR(buff.st_mode)))
-	{
-		if (first->type == 3)
-			first->type = 6;
-		else
-			first->type = 5;
-	}
-	if (ft_file_info(kl, buff, first, listxattr(t, NULL, 0, XATTR_NOFOLLOW)) != 1)
+	ft_is_it_prev_cur_dir(kl, first, buff);
+	if (ft_file_info(kl, buff, first, listxattr(t, NULL, 0,
+						XATTR_NOFOLLOW)) != 1)
 		return (-1);
 	ft_strdel(&t);
 	return (0);

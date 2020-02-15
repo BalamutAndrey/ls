@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_dirkeylist.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:06:58 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/13 18:07:08 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/15 14:18:53 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_split_t_dirkeylist(t_dirkeylist *first, t_dirkeylist **a,
+void			ft_split_t_dirkeylist(t_dirkeylist *first, t_dirkeylist **a,
 			t_dirkeylist **b)
 {
 	t_dirkeylist	*left;
@@ -59,7 +59,7 @@ t_dirkeylist	*ft_merge_dirkeylist(t_dirkeylist *a, t_dirkeylist *b,
 	return (result);
 }
 
-void	ft_sort_dirkeylist(t_dirkeylist **list, int (*cmp)())
+void			ft_sort_dirkeylist(t_dirkeylist **list, int (*cmp)())
 {
 	t_dirkeylist	*first;
 	t_dirkeylist	*a;

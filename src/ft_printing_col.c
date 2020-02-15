@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printing_col.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 17:37:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/07 17:34:46 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/15 14:18:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_fill_in(t_printcols *in, t_fin *first)
+void		ft_fill_in(t_printcols *in, t_fin *first)
 {
 	int		len;
 	t_fin	*temp;
@@ -34,7 +34,7 @@ void	ft_fill_in(t_printcols *in, t_fin *first)
 	ft_fill_in_check(in);
 }
 
-void	ft_fill_in_check(t_printcols *in)
+void		ft_fill_in_check(t_printcols *in)
 {
 	if (in->file_maxlen > in->term_width)
 	{
@@ -56,7 +56,7 @@ void	ft_fill_in_check(t_printcols *in)
 	}
 }
 
-int		ft_printing_c(t_keylist *kl, t_fin *first)
+int			ft_printing_c(t_keylist *kl, t_fin *first)
 {
 	t_printcols	*in;
 	t_fin		*temp;
@@ -76,7 +76,7 @@ int		ft_printing_c(t_keylist *kl, t_fin *first)
 	return (1);
 }
 
-t_fin	*ft_printing_c_while(t_fin *first, t_fin *temp, t_printcols *in)
+t_fin		*ft_printing_c_while(t_fin *first, t_fin *temp, t_printcols *in)
 {
 	if (in->cur_pos == in->next_pos)
 	{

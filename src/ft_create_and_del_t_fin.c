@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_and_del_t_fin.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:14:17 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/07 17:09:23 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/15 14:10:06 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_delete_lists(t_keylist *kl, t_fin *first)
 {
 	t_fin	*temp;
-	
+
 	while (first != NULL)
 	{
 		if (first->dir)
@@ -38,14 +38,13 @@ void	ft_delete_lists(t_keylist *kl, t_fin *first)
 	}
 	if (kl != NULL && kl->maxsize)
 		ft_reset_maxsize(kl->maxsize);
-	//	free(kl->maxsize);
 }
 
 t_fin	*ft_create_next_t_fin(t_keylist *kl, t_fin *temp, char *dir)
 {
 	t_fin			*new;
 
-	new = malloc(sizeof(t_fin));/*здесь может быть ft_memalloc*/
+	new = malloc(sizeof(t_fin));
 	new->dir = ft_strdup(dir);
 	new->name = NULL;
 	new->linkto = NULL;
@@ -55,5 +54,5 @@ t_fin	*ft_create_next_t_fin(t_keylist *kl, t_fin *temp, char *dir)
 	if (temp)
 		temp->next = new;
 	return (new);
-	(void)kl; //not used
+	(void)kl;
 }

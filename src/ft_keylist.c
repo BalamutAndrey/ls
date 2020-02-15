@@ -6,13 +6,13 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:50:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/02 15:19:18 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 14:10:40 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-t_keylist	*create_keylist(void)
+t_keylist		*create_keylist(void)
 {
 	t_keylist	*kl;
 
@@ -39,7 +39,7 @@ t_keylist	*create_keylist(void)
 	return (kl);
 }
 
-void		create_keylist_1(t_keylist *kl)
+void			create_keylist_1(t_keylist *kl)
 {
 	kl->x = 0;
 	kl->current = kl->first;

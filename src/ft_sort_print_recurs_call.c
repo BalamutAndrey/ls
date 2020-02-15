@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 16:23:03 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/06 14:03:59 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 14:19:31 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_recursive_call(t_keylist *kl, t_fin *first)
 		}
 		first = first->next;
 	}
-//	ft_delete_lists(temp);
 }
 
 void	ft_print_dir(t_keylist *kl, t_fin *first)
@@ -53,8 +52,6 @@ void	ft_print_dir(t_keylist *kl, t_fin *first)
 	if (((kl->isfile > 0) && (kl->t_first == NULL)) ||
 		((kl->dirnbr > 1) && (kl->t_first == NULL)))
 		ft_printf("%s:\n", first->dir);
-	// if ((kl->l == 1) && (kl->t_first == NULL) && kl->maxsize->totalfile > 0)
-	// 	ft_printf("total %i\n", kl->maxsize->total);
 	ft_printing(kl, temp);
 }
 
@@ -117,5 +114,5 @@ void	ft_sort_t_fin(t_keylist *kl, t_fin **list, int (*cmp)())
 		ft_sort_t_fin(kl, &b, (*cmp));
 		*list = ft_merge(a, b, (*cmp));
 	}
-	(void)kl; //not used
+	(void)kl;
 }

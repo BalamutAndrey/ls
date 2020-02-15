@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:49:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/07 13:16:44 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 14:27:51 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef	struct				s_fileinfo
 	uint64_t				size;
 	char					*time;
 	time_t					mtime;
-	time_t						atime;
+	time_t					atime;
 }							t_fileinfo;
 
 typedef	struct				s_fin
