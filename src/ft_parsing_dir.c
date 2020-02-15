@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:40:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/15 18:58:01 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 20:22:34 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,26 @@ int		ft_ls_writedir(t_keylist *kl, char *argv)
 {
 	DIR				*dir;
 	struct stat		buff;
+	char			*linkto;
 
 	dir = NULL;
+	linkto = NULL;
 	lstat(argv, &buff);
 	if ((S_ISDIR(buff.st_mode)) || ((S_ISLNK(buff.st_mode)) &&
 		((kl->l != 1) || (kl->l_big == 1))))
 	{
-		if ((S_ISDIR(buff.st_mode)) || (ft_check_link(argv)))
-			dir = ft_ls_writedir_open(kl, argv);
+		if ((S_ISDIR(buff.st_mode)) || ((linkto = ft_check_link(argv)) != NULL))
+		{
+			if (linkto != NULL)
+			{
+				dir = ft_ls_writedir_open(kl, linkto);
+				ft_strdel(&linkto);
+			}
+			else
+			{
+				dir = ft_ls_writedir_open(kl, argv);
+			}
+		}
 		else
 			ft_create_tempdir(kl, argv);
 	}
@@ -65,7 +77,7 @@ DIR		*ft_ls_writedir_open(t_keylist *kl, char *argv)
 	return (dir);
 }
 
-int		ft_check_link(char *str)
+char	*ft_check_link(char *str)
 {
 	int			f;
 	char		*linkto;
@@ -79,6 +91,7 @@ int		ft_check_link(char *str)
 	}
 	lstat(linkto, &buff);
 	if (S_ISDIR(buff.st_mode))
-		return (1);
-	return (0);
+		return (linkto);
+	ft_strdel(&linkto);
+	return (NULL);
 }

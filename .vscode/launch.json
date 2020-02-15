@@ -12,7 +12,7 @@
 			//"args": ["-l", "../../../../../var/run"],
 			// "args": ["-R", "../../../../../"],
 			// "args": ["-l", "--", "--", "test7"],
-			"args": ["test", "'z'", "test2"],
+			"args": ["/var"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

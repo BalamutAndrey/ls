@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:50:36 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/15 19:11:45 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 20:08:12 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,11 @@ t_dirkeylist	*add_dkl(t_keylist *kl)
 
 void			remove_list(t_keylist *kl)
 {
-	int				i;
 	t_dirkeylist	*tempdir1;
 	t_dirkeylist	*tempdir2;
 
-	i = 0;
 	tempdir1 = kl->first;
-	while (++i <= kl->dirnbr)
+	while (tempdir1)
 	{
 		ft_strdel(&tempdir1->dir);
 		tempdir2 = tempdir1->next;

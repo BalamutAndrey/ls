@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 13:29:49 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/13 19:13:37 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 19:57:20 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	ft_check_file_link(t_fin *first, char *fn)
 				first->linkto = ft_strdup(linkto);
 			}
 		}
+		ft_strdel(&linkto);
 	}
 }

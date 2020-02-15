@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:14:17 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/15 14:10:06 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/15 19:58:59 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	ft_delete_lists(t_keylist *kl, t_fin *first)
 
 	while (first != NULL)
 	{
-		if (first->dir)
-			ft_strdel(&first->dir);
-		if (first->name)
-			ft_strdel(&first->name);
-		if (first->linkto)
-			ft_strdel(&first->linkto);
+//		if (first->dir)
+		ft_strdel(&first->dir);
+//		if (first->name)
+		ft_strdel(&first->name);
+//		if (first->linkto)
+		ft_strdel(&first->linkto);
 		if (first->info)
 		{
 			ft_del_fileinfo(first->info);
