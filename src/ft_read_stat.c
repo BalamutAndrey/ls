@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 13:12:43 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/15 19:12:33 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/16 17:54:07 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		ft_read_dir_cycle_lstat(t_fin *first, struct stat *buff, char *t)
 		if (err > 0)
 		{
 			linkto[err] = '\0';
+			if (first->linkto)
+				ft_strdel(&first->linkto);
 			first->linkto = ft_strdup(linkto);
 			ft_strdel(&linkto);
 		}
