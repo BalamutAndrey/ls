@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 15:56:27 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/16 16:49:20 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/16 17:13:54 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_fin	*ft_check_keys_a_a_big(t_fin *first, t_keylist *kl)
 	temp = NULL;
 	while (first)
 	{
-		if (kl->a_big == 1 && first->type == 2)
+		if (first->type == 2)
 			first = first->next;
 		else if (kl->a_big == 0 && first->type == 3)
 			first = first->next;
