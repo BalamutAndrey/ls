@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:42:40 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/15 19:13:43 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/16 16:29:44 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int		ft_read_dir_cycle(t_keylist *kl, DIR *dir, t_fin *first)
 		if (first->name)
 			first = ft_create_next_t_fin(kl, first, first->dir);
 		t = ft_strjoin_arg("%s %s %s", first->dir, "/", entry->d_name);
-		ft_read_dir_cycle_write(kl, first, entry, t);
+		if ((ft_read_dir_cycle_write(kl, first, entry, t)) == -1)
+			return (-1);
 	}
 	return (0);
 }

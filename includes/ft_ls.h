@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:44:15 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/15 20:19:25 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/16 16:29:11 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int				ft_ls_key(t_keylist *kl, char *argv);
 */
 int				ft_ls_writedir(t_keylist *kl, char *argv);
 DIR				*ft_ls_writedir_open(t_keylist *kl, char *argv);
+DIR				*ft_check_link_if(t_keylist *kl, char *argv, struct stat buff);
 char			*ft_check_link(char *str);
 /*
 ** ft_parsing_key.c

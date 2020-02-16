@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:10:19 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/15 17:01:45 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/16 16:19:49 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,24 @@ void	ft_printing(t_keylist *kl, t_fin *temp)
 	l = 0;
 	if ((kl->one != 1) && (kl->l != 1) && (kl->x != 1))
 	{
-		if (kl->a == 1)
-			alt_f = temp;
-		else
-			alt_f = ft_check_keys_a_a_big(temp, kl);
+		alt_f = kl->a == 1 ? temp : ft_check_keys_a_a_big(temp, kl);
 		if (alt_f)
 		{
 			ft_printing_c(kl, alt_f);
-			ft_delete_lists(NULL, alt_f);
+			if (kl->a != 1)
+				ft_delete_lists(NULL, alt_f);
 			ft_printf("\n");
 		}
 	}
 	if ((kl->l == 1) && (kl->t_first == NULL) && kl->maxsize->totalfile > 0)
 		ft_printf("total %i\n", kl->maxsize->total);
-	while (temp != NULL)
+	while ((temp != NULL) && ((kl->one == 1) || (kl->l == 1) || (kl->x == 1)))
 	{
 		l = ft_printing_while(kl, temp, l);
 		temp = temp->next;
 	}
+	if ((kl->r_big == 1) && (kl->x == 1) && (kl->maxsize->totalfile > 0))
+		ft_printf("\n");
 }
 
 int64_t	ft_printing_while(t_keylist *kl, t_fin *temp, int64_t l)

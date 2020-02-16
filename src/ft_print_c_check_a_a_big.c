@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_c_check_a_a_big.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 15:56:27 by geliz             #+#    #+#             */
-/*   Updated: 2020/02/07 17:14:07 by geliz            ###   ########.fr       */
+/*   Updated: 2020/02/16 16:49:20 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_fin	*ft_check_keys_a_a_big(t_fin *first, t_keylist *kl)
 	{
 		if (kl->a_big == 1 && first->type == 2)
 			first = first->next;
-		else if (kl->a_big == 0 && first->type >= 2)
+		else if (kl->a_big == 0 && first->type == 3)
 			first = first->next;
 		else
 		{

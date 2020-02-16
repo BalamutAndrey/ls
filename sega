@@ -1,0 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    sega                                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: eboris <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/02/16 14:34:08 by eboris            #+#    #+#              #
+#    Updated: 2020/02/16 14:34:15 by eboris           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+//Library/Scripts/42/exam:
+ls: //Library/Scripts/42/exam: Permission denied
+
+//Library/Scripts/42/hooks:
+ls: //Library/Scripts/42/hooks: Permission denied
+
+//Library/Scripts/42/munki:
+==70967== 
+

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:51 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/13 18:41:49 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/16 16:55:46 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 			if (c != '-')
 			{
 				ft_print_illegal_option(argv[0], argv[i][c]);
+				remove_list(kl);
 				return (0);
 			}
 			else if ((c == '-') && (argv[i][1] == '\0'))
@@ -37,8 +38,7 @@ t_keylist	*ft_ls_parsing_key(int argc, char **argv)
 		}
 		i++;
 	}
-	i--;
-	return (ft_parsing_dir(kl, argc, argv, i));
+	return (ft_parsing_dir(kl, argc, argv, (i - 1)));
 }
 
 t_keylist	*ft_parsing_dir(t_keylist *kl, int argc, char **argv, int i)
