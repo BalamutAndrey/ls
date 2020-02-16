@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:40:55 by eboris            #+#    #+#             */
-/*   Updated: 2020/02/15 20:22:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/02/16 14:01:56 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_ls_writedir(t_keylist *kl, char *argv)
 		{
 			if (linkto != NULL)
 			{
-				dir = ft_ls_writedir_open(kl, linkto);
+				dir = ft_ls_writedir_open(kl, argv);
 				ft_strdel(&linkto);
 			}
 			else
@@ -89,7 +89,7 @@ char	*ft_check_link(char *str)
 	{
 		linkto[f] = '\0';
 	}
-	lstat(linkto, &buff);
+	stat(str, &buff);
 	if (S_ISDIR(buff.st_mode))
 		return (linkto);
 	ft_strdel(&linkto);
